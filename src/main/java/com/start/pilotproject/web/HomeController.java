@@ -1,4 +1,4 @@
-package com.start.pilotproject.index;
+package com.start.pilotproject.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
