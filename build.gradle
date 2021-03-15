@@ -1,33 +1,65 @@
-plugins {
-	id 'org.springframework.boot' version '2.4.3'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id 'java'
+plugins { // (1)
+    id 'org.springframework.boot' version '2.4.1' // RELEASE 삭제
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
 }
 
-group = 'com.start'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
-
+group 'com.start.pilotproject'
+version '1.0.4-SNAPSHOT-'
+sourceCompatibility = 11   
 configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+// querydsl 적용
+def generated='src/main/generated'
+sourceSets {
+    main.java.srcDirs += [ generated ]
+}
+
+tasks.withType(JavaCompile) {
+    options.annotationProcessorGeneratedSourcesDirectory = file(generated)
+}
+
+clean.doLast {
+    file(generated).deleteDir()
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
+    jcenter()
 }
 
+
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
+    // lombok
+    implementation('org.projectlombok:lombok')
+    annotationProcessor('org.projectlombok:lombok')
+    testImplementation('org.projectlombok:lombok')
+    testAnnotationProcessor('org.projectlombok:lombok')
+
+    implementation('com.oracle.ojdbc:ojdbc8')
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+
+    //querydsl
+    implementation("com.querydsl:querydsl-jpa")
+    implementation("com.querydsl:querydsl-core")
+    annotationProcessor("com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jpa") // querydsl JPAAnnotationProcessor 사용 지정
+    annotationProcessor("jakarta.persistence:jakarta.persistence-api:2.2.3")
+    annotationProcessor("jakarta.annotation:jakarta.annotation-api:1.3.5")
+
+    //h2    
+    implementation("com.h2database:h2")
+    testImplementation("com.h2database:h2")
+
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
