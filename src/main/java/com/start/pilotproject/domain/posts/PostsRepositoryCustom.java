@@ -1,7 +1,10 @@
 package com.start.pilotproject.domain.posts;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+import org.springframework.stereotype.Repository;
 
-public interface PostsRepositoryCustom {
-    List<Posts> search(Long id);
+@Repository
+public interface PostsRepositoryCustom extends JpaRepository<Posts,Long>,QuerydslPredicateExecutor<Posts>{
+    
 }

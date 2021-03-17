@@ -1,7 +1,5 @@
 package com.start.pilotproject.domain.user;
 
-import javax.persistence.Entity;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

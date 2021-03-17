@@ -5,9 +5,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import com.querydsl.core.types.Predicate;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.start.pilotproject.domain.posts.Posts;
 import com.start.pilotproject.domain.posts.PostsRepository;
+import com.start.pilotproject.domain.posts.PostsRepositoryCustom;
+import com.start.pilotproject.domain.posts.QPosts;
 import com.start.pilotproject.web.dto.PostsSaveRequestDto;
 
 import org.junit.jupiter.api.AfterEach;
@@ -20,7 +28,6 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -33,11 +40,18 @@ public class PostsRepositoryTest {
 
     @Autowired
     PostsRepository postsRepository;
+    
+    @Autowired
+    PostsRepositoryCustom postsRepositoryCustom;
+
 
     @AfterEach
     public void teardown() throws Exception{
         postsRepository.deleteAll();
     }
+
+    @PersistenceContext // 영속성 객체를 자동으로 삽입해줌
+    private EntityManager em; 
 
     @Test
     public void 게시글저장_불러오기() {
@@ -94,5 +108,13 @@ public class PostsRepositoryTest {
         // assertThat(posts.getCreatedDate()).isAfter(now);
         // assertThat(posts.getModifiedDate()).isAfter(now);
 
+    }
+    @Test
+    public void 아이디로_찾는다(){
+        QPosts posts = QPosts.posts; 
+        Predicate predicate = posts.author.eq("jj");
+        Optional<Posts> post = postsRepositoryCustom.findOne(predicate);
+        System.out.println("결과!?"+post);
+            
     }
 }
