@@ -1,4 +1,4 @@
-package com.start.pilotproject.web.dto;
+package com.start.pilotproject.domain.dto;
 
 import com.start.pilotproject.domain.posts.Posts;
 

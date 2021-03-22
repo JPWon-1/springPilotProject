@@ -1,4 +1,4 @@
-package com.start.pilotproject.web;
+package com.start.pilotproject.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,4 +10,5 @@ public class HomeController {
     public String home(){
         return "index";
     }
+   
 }

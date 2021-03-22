@@ -11,12 +11,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.querydsl.core.types.Predicate;
-import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.start.pilotproject.domain.posts.Posts;
 import com.start.pilotproject.domain.posts.PostsRepository;
 import com.start.pilotproject.domain.posts.PostsRepositoryCustom;
 import com.start.pilotproject.domain.posts.QPosts;
-import com.start.pilotproject.web.dto.PostsSaveRequestDto;
+import com.start.pilotproject.domain.dto.PostsSaveRequestDto;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;

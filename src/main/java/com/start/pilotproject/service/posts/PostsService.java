@@ -10,8 +10,8 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.start.pilotproject.domain.posts.Posts;
 import com.start.pilotproject.domain.posts.PostsRepository;
 import com.start.pilotproject.domain.posts.QPosts;
-import com.start.pilotproject.web.dto.PostsDto;
-import com.start.pilotproject.web.dto.PostsSaveRequestDto;
+import com.start.pilotproject.domain.dto.PostsDto;
+import com.start.pilotproject.domain.dto.PostsSaveRequestDto;
 
 import org.springframework.stereotype.Service;
 
