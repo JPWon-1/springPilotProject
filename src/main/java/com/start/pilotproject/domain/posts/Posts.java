@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
+import com.start.pilotproject.util.BaseTimeEntity;
+
 import org.springframework.stereotype.Component;
 
 import lombok.Builder;
@@ -17,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Component
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity{
     @Id
     @SequenceGenerator(name="post_seq", sequenceName="post_seq", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="post_seq")
