@@ -11,6 +11,7 @@ import com.start.pilotproject.domain.posts.Posts;
 import com.start.pilotproject.domain.posts.PostsRepository;
 import com.start.pilotproject.domain.posts.QPosts;
 import com.start.pilotproject.domain.dto.PostsDto;
+import com.start.pilotproject.domain.dto.PostsDto.PostsUpdateRequestDto;
 import com.start.pilotproject.domain.dto.PostsSaveRequestDto;
 
 import org.springframework.stereotype.Service;
@@ -44,7 +45,7 @@ public class PostsService {
     }
 
     @Transactional
-    public Long update(Long id, PostsDto.Request requestDto){
+    public Long update(Long id, PostsUpdateRequestDto requestDto){
         Posts posts = postsRepository.findById(id).orElseThrow(
             ()->new IllegalArgumentException("해당 게시글이 없습니다"));
         posts.update(requestDto.getTitle(), requestDto.getContent());

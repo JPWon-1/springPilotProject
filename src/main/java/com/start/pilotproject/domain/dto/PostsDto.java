@@ -23,11 +23,12 @@ public class PostsDto {
     }
 
     @Getter
-    public static class Request{
+    public static class PostsUpdateRequestDto{
         private String title;
         private String content;
+
         @Builder
-        public Request(String title,String content){
+        public PostsUpdateRequestDto(String title,String content){
             this.title = title;
             this.content = content;
         }
