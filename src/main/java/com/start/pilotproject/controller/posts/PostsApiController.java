@@ -4,6 +4,7 @@ import com.start.pilotproject.domain.posts.PostsRepository;
 import com.start.pilotproject.service.posts.PostsService;
 import com.start.pilotproject.domain.dto.PostsDto;
 import com.start.pilotproject.domain.dto.PostsDto.PostsUpdateRequestDto;
+import com.start.pilotproject.domain.dto.PostsDto.Response;
 import com.start.pilotproject.domain.dto.PostsSaveRequestDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,11 @@ public class PostsApiController {
     @PutMapping("/api/v1/posts/{id}")//수정
     public Long update(@PathVariable Long id , @RequestBody PostsUpdateRequestDto requestDto){
         return postsService.update(id,requestDto);
+    }
+
+    @GetMapping("/api/v1/posts/{id}")//조회
+    public Response findById(@PathVariable Long id){
+        return postsService.findById(id);
     }
 
     @DeleteMapping("/api/v1/posts/{id}")//삭제

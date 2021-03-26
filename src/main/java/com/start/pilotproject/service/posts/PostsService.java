@@ -12,6 +12,7 @@ import com.start.pilotproject.domain.posts.PostsRepository;
 import com.start.pilotproject.domain.posts.QPosts;
 import com.start.pilotproject.domain.dto.PostsDto;
 import com.start.pilotproject.domain.dto.PostsDto.PostsUpdateRequestDto;
+import com.start.pilotproject.domain.dto.PostsDto.Response;
 import com.start.pilotproject.domain.dto.PostsSaveRequestDto;
 
 import org.springframework.stereotype.Service;
@@ -52,7 +53,7 @@ public class PostsService {
         return id;
     }
 
-    public PostsDto.Response findById(Long id){
+    public Response findById(Long id){
         Posts entity = postsRepository.findById(id).orElseThrow(
             ()->new IllegalArgumentException("해당 게시글이 없습니다"));
         return new PostsDto.Response(entity);
