@@ -4,9 +4,11 @@ import com.start.pilotproject.domain.posts.Posts;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 public class PostsDto {
 
+    @NoArgsConstructor
     @Getter
     public static class Response{
         private Long id;
@@ -22,6 +24,7 @@ public class PostsDto {
         }    
     }
 
+    @NoArgsConstructor
     @Getter
     public static class PostsUpdateRequestDto{
         private String title;
