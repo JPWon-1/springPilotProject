@@ -46,11 +46,10 @@ public class PostsRepositoryTest {
     @Autowired
     PostsRepositoryCustom postsRepositoryCustom;
 
-
-    @AfterEach
-    public void teardown() throws Exception{
-        postsRepository.deleteAll();
-    }
+    // @AfterEach
+    // public void teardown() throws Exception{
+    //     postsRepository.deleteAll();
+    // }
 
     @PersistenceContext // 영속성 객체를 자동으로 삽입해줌
     private EntityManager em; 

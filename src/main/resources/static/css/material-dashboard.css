@@ -2354,12 +2354,6 @@ pre code {
   opacity: 1;
 }
 
-.form-control:disabled,
-.form-control[readonly] {
-  background-color: #e9ecef;
-  opacity: 1;
-}
-
 select.form-control:not([size]):not([multiple]) {
   height: calc(2.4375rem + 2px);
 }

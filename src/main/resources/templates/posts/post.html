@@ -20,7 +20,9 @@
 <body class="dark-edition">
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="black" data-image="/img/sidebar-2.jpg">
-      <div class="logo"><a href="javascript:void(0)" class="simple-text logo-normal">JP-github</a></div>
+      <div class="logo"><a href="javascript:void(0)" class="simple-text logo-normal">
+          JP github
+        </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item  ">
@@ -35,7 +37,7 @@
               <p>User Profile</p>
             </a>
           </li>
-          <li class="nav-item active ">
+          <li class="nav-item ">
             <a class="nav-link" href="javascript:void(0)">
               <i class="material-icons">content_paste</i>
               <p>Table List</p>
@@ -73,7 +75,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">Table List</a>
+            <a class="navbar-brand" href="javascript:void(0)">Post</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
             <span class="sr-only">Toggle navigation</span>
@@ -124,36 +126,28 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8 ml-auto mr-auto">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title ">Simple Table</h4>
-                  <a href="/posts/write" role="button" class="btn btn-primary">글쓰기</a>
+                  <h3 th:text="${list?.title}" class="card-title">Post 제목</h3>
+                  <span th:text="${list?.author}" class="card-title">ID</span>
+                  <span th:text="${#temporals.format(list?.createdDate, 'yyyy-MM-dd HH:mm')}">날짜</span>
                 </div>
                 <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table">
-                      <thead class=" text-primary">
-                        <th>번호</th>
-                        <th>작성자</th>
-                        <th>제목</th>
-                        <th>작성일</th>
-                      </thead>
-                      <tbody>
-                        <th:block th:each="list : ${list}">
-                        <tr>
-                          <td th:text="${list?.id}">1</td>
-                          <td th:text="${list?.author}">Dakota Rice</td>
-                          <td>
-                            <a th:href="|/posts/${list?.id}|" th:text="${list?.title}"></a>
-                          </td>
-                          <td th:text="${#temporals.format(list?.createdDate, 'yyyy-MM-dd HH:mm')}">2021-12-31</td>
-                        </tr>
-                        </th:block>
-                      </tbody>
-                    </table>
+                  <div class="table-responsive table-upgrade">
+                      <textarea class="form-control" 
+                        id="content" 
+                        rows="10" 
+                        th:text="${list?.content}" 
+                        readonly 
+                        style="cursor:default;"
+                      ></textarea>
                   </div>
                 </div>
+              </div>
+              <div>
+                <a class="btn btn-primary" role="button" href="/posts">등록</a>
+                <a class="btn btn-primary" role="button" href="/posts">취소</a>
               </div>
             </div>
           </div>
