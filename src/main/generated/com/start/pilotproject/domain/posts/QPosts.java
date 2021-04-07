@@ -19,11 +19,19 @@ public class QPosts extends EntityPathBase<Posts> {
 
     public static final QPosts posts = new QPosts("posts");
 
+    public final com.start.pilotproject.util.QBaseTimeEntity _super = new com.start.pilotproject.util.QBaseTimeEntity(this);
+
     public final StringPath author = createString("author");
 
     public final StringPath content = createString("content");
 
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;
+
     public final NumberPath<Long> id = createNumber("id", Long.class);
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> modifiedDate = _super.modifiedDate;
 
     public final StringPath title = createString("title");
 

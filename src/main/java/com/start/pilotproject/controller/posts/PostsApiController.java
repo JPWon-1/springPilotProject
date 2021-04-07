@@ -1,13 +1,10 @@
 package com.start.pilotproject.controller.posts;
 
-import com.start.pilotproject.domain.posts.PostsRepository;
 import com.start.pilotproject.service.posts.PostsService;
-import com.start.pilotproject.domain.dto.PostsDto;
 import com.start.pilotproject.domain.dto.PostsDto.PostsUpdateRequestDto;
-import com.start.pilotproject.domain.dto.PostsDto.Response;
+import com.start.pilotproject.domain.dto.PostsDto.PostsResponse;
 import com.start.pilotproject.domain.dto.PostsSaveRequestDto;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,7 +31,7 @@ public class PostsApiController {
     }
 
     @GetMapping("/api/v1/posts/{id}")//조회
-    public Response findById(@PathVariable Long id){
+    public PostsResponse findById(@PathVariable Long id){
         return postsService.findById(id);
     }
 

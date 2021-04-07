@@ -1,21 +1,22 @@
 package com.start.pilotproject.service.posts;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.start.pilotproject.domain.dto.PostsDto.PostsResponse;
+import com.start.pilotproject.domain.dto.PostsDto.PostsUpdateRequestDto;
+import com.start.pilotproject.domain.dto.PostsSaveRequestDto;
 import com.start.pilotproject.domain.posts.Posts;
 import com.start.pilotproject.domain.posts.PostsRepository;
 import com.start.pilotproject.domain.posts.QPosts;
-import com.start.pilotproject.domain.dto.PostsDto;
-import com.start.pilotproject.domain.dto.PostsDto.PostsUpdateRequestDto;
-import com.start.pilotproject.domain.dto.PostsDto.Response;
-import com.start.pilotproject.domain.dto.PostsSaveRequestDto;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,8 +25,31 @@ import lombok.RequiredArgsConstructor;
 public class PostsService {
     private final PostsRepository postsRepository;
 
-     @PersistenceContext // 영속성 객체를 자동으로 삽입해줌
-     private EntityManager em; 
+    @PersistenceContext // 영속성 객체를 자동으로 삽입해줌
+    private EntityManager em; 
+
+    @Transactional(readOnly = true)
+    public List<PostsResponse> findAllDesc(){
+        return postsRepository.findAllDesc().stream()
+                .map(PostsResponse::new)
+                .collect(Collectors.toList());
+    }
+    
+    @Transactional(readOnly = true)
+    public PostsResponse getOne(Long id){
+        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
+        QPosts posts = QPosts.posts; 
+        return queryFactory.from(posts)
+            .select(Projections.constructor(PostsResponse.class,
+            posts.id,
+            posts.author,
+            posts.title,
+            posts.content,
+            posts.createdDate,
+            posts.modifiedDate
+            )).where(posts.id.eq(id))
+            .fetchOne();
+    }
 
     @Transactional
     public Long save(PostsSaveRequestDto requestDto){
@@ -38,12 +62,6 @@ public class PostsService {
         postsRepository.delete(posts);
     }
 
-    @Transactional
-    public List<Posts> search(){
-        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
-        QPosts posts = QPosts.posts; 
-        return queryFactory.selectFrom(posts).fetch();
-    }
 
     @Transactional
     public Long update(Long id, PostsUpdateRequestDto requestDto){
@@ -53,9 +71,9 @@ public class PostsService {
         return id;
     }
 
-    public Response findById(Long id){
+    public PostsResponse findById(Long id){
         Posts entity = postsRepository.findById(id).orElseThrow(
             ()->new IllegalArgumentException("해당 게시글이 없습니다"));
-        return new PostsDto.Response(entity);
+        return new PostsResponse(entity);
     }
 }

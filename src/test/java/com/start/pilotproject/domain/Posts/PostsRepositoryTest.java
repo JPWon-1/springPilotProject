@@ -18,7 +18,6 @@ import com.start.pilotproject.domain.posts.PostsRepository;
 import com.start.pilotproject.domain.posts.PostsRepositoryCustom;
 import com.start.pilotproject.domain.posts.QPosts;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,23 +56,22 @@ public class PostsRepositoryTest {
     @Test
     public void 게시글저장_불러오기() {
         // given
-        String title = "테스트 게시글";
-        String content = "테스트 본문";
+        String title = "이것은 테스트입니다";
+        String content = "content2";
         postsRepository.save(Posts.builder().title(title).content(content).author("jp@gmail.com").build());
         // when
-        List<Posts> postsList = postsRepository.findAll();
+        Posts post = postsRepository.findByTitle(title);
 
         // then
-        Posts posts = postsList.get(0);
-        assertThat(posts.getTitle()).isEqualTo(title);
-        assertThat(posts.getContent()).isEqualTo(content);
+        assertThat(post.getTitle()).isEqualTo(title);
+        assertThat(post.getContent()).isEqualTo(content);
     }
 
     @Test
     public void Posts_등록된다() throws Exception{
         //given
-        String title = "title";
-        String content= "content";
+        String title = "title2";
+        String content= "content2";
         PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
                 .title(title)
                 .content(content)
