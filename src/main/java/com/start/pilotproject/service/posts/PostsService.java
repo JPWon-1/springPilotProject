@@ -41,12 +41,12 @@ public class PostsService {
         QPosts posts = QPosts.posts; 
         return queryFactory.from(posts)
             .select(Projections.constructor(PostsResponse.class,
-            posts.id,
-            posts.author,
-            posts.title,
-            posts.content,
-            posts.createdDate,
-            posts.modifiedDate
+                posts.id,
+                posts.author,
+                posts.title,
+                posts.content,
+                posts.createdDate,
+                posts.modifiedDate
             )).where(posts.id.eq(id))
             .fetchOne();
     }
@@ -55,6 +55,7 @@ public class PostsService {
     public Long save(PostsSaveRequestDto requestDto){
         return postsRepository.save(requestDto.toEntity()).getId();
     }
+    
     @Transactional
     public void delete(Long id){
         Posts posts = postsRepository.findById(id)

@@ -17,7 +17,7 @@
   <link href="/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
 </head>
 
-<body class="dark-edition">
+<body class="dark-edition" onload="javascript:post.init()">
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="black" data-image="/img/sidebar-2.jpg">
       <div class="logo"><a href="javascript:void(0)" class="simple-text logo-normal">
@@ -139,8 +139,9 @@
                 </div>
               </div>
               <div>
-                <a class="btn btn-primary" role="button" href="/posts">등록</a>
+                <a class="btn btn-primary" id="btn-save" role="button">등록</a>
                 <a class="btn btn-primary" role="button" href="/posts">취소</a>
+                <a class="btn btn-primary" id="btn-delete" role="button">삭제</a>
               </div>
             </div>
           </div>
@@ -149,6 +150,7 @@
     </div>
   </div>
   <!--   Core JS Files   -->
+  <script src="/js/view/post.js"></script>
   <script src="/js/core/jquery.min.js"></script>
   <script src="/js/core/popper.min.js"></script>
   <script src="/js/core/bootstrap-material-design.min.js"></script>

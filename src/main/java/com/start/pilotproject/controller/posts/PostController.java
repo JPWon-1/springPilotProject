@@ -20,7 +20,7 @@ public class PostController {
     @GetMapping
     public String getPosts(Model model){
         model.addAttribute("list", postsService.findAllDesc());
-        return "posts/posts";
+        return "posts/postIndex";
     }
 
     @GetMapping("/{id}")
