@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 
 public class PostsDto {
 
+    @NoArgsConstructor
     @Getter
     public static class PostsResponse{
         private Long id;
@@ -19,14 +20,6 @@ public class PostsDto {
         private String content;
         private LocalDateTime modifiedDate;
         private LocalDateTime createdDate;
-
-        public PostsResponse(Long id, String title, String author, String content,
-         LocalDateTime createdDate, LocalDateTime modifiedDate) {
-            this.id = id;
-            this.title = title;
-            this.content = content;
-            this.author = author;
-        }
 
         public PostsResponse(Posts entity){
             this.id = entity.getId();

@@ -130,18 +130,19 @@
               <div class="card">
                 <div class="card-header card-header-primary">
                   <h4 class="card-title">Post 등록</h4>
-                  <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요">
+                  <input type="hidden" id="id" th:value="${list?.id}">
+                  <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요" th:value="${list?.title}">
                 </div>
                 <div class="card-body">
                   <div class="table-responsive table-upgrade">
-                      <textarea class="form-control" rows="10" id="content" placeholder="내용을 입력하세요"></textarea>
+                      <textarea class="form-control" rows="10" id="content" placeholder="내용을 입력하세요" th:text="${list?.content}"></textarea>
                   </div>
                 </div>
               </div>
               <div>
-                <a class="btn btn-primary" id="btn-save" role="button">등록</a>
+                <a class="btn btn-primary" id="btn-save"  th:if="${list?.id eq null}" role="button">등록</a>
+                <a class="btn btn-primary" id="btn-update" th:if="${list?.id ne null}" role="button">수정</a>
                 <a class="btn btn-primary" role="button" href="/posts">취소</a>
-                <a class="btn btn-primary" id="btn-delete" role="button">삭제</a>
               </div>
             </div>
           </div>

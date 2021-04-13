@@ -17,7 +17,7 @@
   <link href="/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
 </head>
 
-<body class="dark-edition">
+<body class="dark-edition" onload="javascript:post.init()">
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="black" data-image="/img/sidebar-2.jpg">
       <div class="logo"><a href="javascript:void(0)" class="simple-text logo-normal">JP-github</a></div>
@@ -142,7 +142,7 @@
                       <tbody>
                         <th:block th:each="list : ${list}">
                         <tr>
-                          <td th:text="${list?.id}">1</td>
+                          <td class="postId" th:text="${list?.id}">1</td>
                           <td th:text="${list?.author}">Dakota Rice</td>
                           <td>
                             <a th:href="|/posts/${list?.id}|" th:text="${list?.title}"></a>
@@ -154,6 +154,10 @@
                     </table>
                   </div>
                 </div>
+                <div style="background-color: aliceblue;">
+                    <h1>hi</h1>
+                    <h3 id="aauthor"></h3>
+                </div>
               </div>
             </div>
           </div>
@@ -161,6 +165,8 @@
       </div>
     </div>
   </div>
+  <!-- post js -->
+  <script src="/js/view/post.js"></script>
   <!--   Core JS Files   -->
   <script src="/js/core/jquery.min.js"></script>
   <script src="/js/core/popper.min.js"></script>

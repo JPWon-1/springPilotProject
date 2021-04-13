@@ -77,7 +77,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">Post</a>
+            <a class="navbar-brand" href="/posts">Post</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
             aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
@@ -132,28 +132,22 @@
           <div class="row">
             <div class="col-md-8 ml-auto mr-auto">
               <div class="card">
-                <!-- <div class="card-header card-header-primary">
-                  <h4 id="id" th:text="${list?.id}" class="card-title">글번호</h4>
-                  <input type="text">
-                  <div id="author" th:text="${list?.author}" class="card-title">author</div>
-                  <div th:text="${#temporals.format(list?.createdDate, 'yyyy-MM-dd HH:mm')}">날짜</div>
-                </div> -->
                 <div class="card-header card-header-primary">
-                  <span th:text="${list?.id}" id="id"></span>
-                  <input type="text" id="title" th:value="${list?.title}"><br>
-                  <div th:text="${list?.author}" id="author"></div>
-                  <div th:text="${#temporals.format(list?.createdDate, 'yyyy-MM-dd HH:mm')}">날짜</div>
+                  글번호 <span id="id" th:text="${list?.id}"></span><br>
+                  제목  <span id="title" th:text="${list?.title}"></span><br>
+                  작성자 <span id="author" th:text="${list?.author}"></span><br>
+                  작성일 <span th:text="${#temporals.format(list?.createdDate, 'yyyy-MM-dd HH:mm')}">날짜</span>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive table-upgrade">
                     <textarea class="form-control" id="content" rows="10" th:text="${list?.content}"
-                      style="cursor:default;"></textarea>
+                      style="cursor:default;" readonly></textarea>
                   </div>
                 </div>
               </div>
               <div>
-                <a class="btn btn-primary" id="btn-update" role="button">수정</a>
-                <a class="btn btn-primary" role="button" href="/posts">취소</a>
+                <a class="btn btn-primary" href="/posts" role="button">목록</a>
+                <a class="btn btn-primary" id="btn-patch" th:href="|/posts/write/${list?.id}|" role="button">수정</a>
                 <a class="btn btn-primary" id="btn-delete" role="button">삭제</a>
               </div>
             </div>

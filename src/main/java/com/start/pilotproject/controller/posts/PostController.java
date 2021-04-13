@@ -17,20 +17,30 @@ public class PostController {
     
     private final PostsService postsService;
     
+    //포스트 리스트 조회
     @GetMapping
     public String getPosts(Model model){
         model.addAttribute("list", postsService.findAllDesc());
         return "posts/postIndex";
     }
 
+    //포스트 조회
     @GetMapping("/{id}")
     public String getPost(Model model, @PathVariable Long id){
         model.addAttribute("list", postsService.getOne(id));
         return "posts/post";
     }
 
+    //글쓰기 페이지
     @GetMapping("/write")
     public String writePost(){
+        return "posts/write";
+    }
+
+    //글쓰기 페이지(수정)
+    @GetMapping("/write/{id}")
+    public String patchPost(Model model, @PathVariable Long id){
+        model.addAttribute("list", postsService.getOne(id));
         return "posts/write";
     }
 }

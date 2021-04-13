@@ -32,7 +32,7 @@ public class PostsApiController {
 
     @GetMapping("/api/v1/posts/{id}")//조회
     public PostsResponse findById(@PathVariable Long id){
-        return postsService.findById(id);
+        return postsService.getOne(id);
     }
 
     @DeleteMapping("/api/v1/posts/{id}")//삭제

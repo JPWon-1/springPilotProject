@@ -40,7 +40,7 @@ public class PostsService {
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
         QPosts posts = QPosts.posts; 
         return queryFactory.from(posts)
-            .select(Projections.constructor(PostsResponse.class,
+            .select(Projections.fields(PostsResponse.class,
                 posts.id,
                 posts.author,
                 posts.title,
@@ -72,9 +72,4 @@ public class PostsService {
         return id;
     }
 
-    public PostsResponse findById(Long id){
-        Posts entity = postsRepository.findById(id).orElseThrow(
-            ()->new IllegalArgumentException("해당 게시글이 없습니다"));
-        return new PostsResponse(entity);
-    }
 }
