@@ -36,7 +36,7 @@ var post = {
     update: function () {
         var data = {
             title: $("#title").val(),
-            content: $("#content").html(),
+            content: $("#content").val(),
         };
         var id = $("#id").val();
         console.log(data, id);
@@ -84,4 +84,4 @@ var post = {
         });
     }
 };
-
+post.init();
