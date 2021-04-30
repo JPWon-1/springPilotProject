@@ -7,27 +7,20 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import com.querydsl.core.types.Predicate;
 import com.start.pilotproject.domain.dto.PostsDto.PostsResponse;
-import com.start.pilotproject.domain.dto.PostsDto.PostsUpdateRequestDto;
-import com.start.pilotproject.domain.dto.PostsDto;
-import com.start.pilotproject.domain.dto.PostsSaveRequestDto;
 import com.start.pilotproject.domain.posts.Posts;
 import com.start.pilotproject.domain.posts.PostsRepository;
 import com.start.pilotproject.domain.posts.PostsRepositoryCustom;
 import com.start.pilotproject.domain.posts.QPosts;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -47,13 +40,10 @@ public class PostsRepositoryTest {
     @Autowired
     PostsRepositoryCustom postsRepositoryCustom;
 
-    // @AfterEach
-    // public void teardown() throws Exception{
-    //     postsRepository.deleteAll();
-    // }
-
-    @PersistenceContext // 영속성 객체를 자동으로 삽입해줌
-    private EntityManager em; 
+    @AfterEach
+    public void teardown() throws Exception{
+        postsRepository.deleteAll();
+    }
 
     @Test
     public void 게시글저장_불러오기() {
@@ -98,29 +88,20 @@ public class PostsRepositoryTest {
     public void Posts_수정된다(){
         //given
         Posts savedPosts = postsRepository.save(Posts.builder()
-            .title("title")
-            .content("content")
+            .title("beforeUpdateTitle")
+            .content("beforeUpdateContent")
             .author("author")
             .build());
-        Long updateId = savedPosts.getId();
-        String expectedTitle = "title2";//업데이트할 제목
-        String expectedContent = "content2";//업데이트할 내용
-        PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder()
-                .title(expectedTitle)
-                .content(expectedContent)
-                .build();
-        
-        String url = "http://localhost:"+port+"/api/v1/posts/"+updateId;
-        HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
-        //when 
-        ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT,requestEntity,Long.class);
+        String expectedTitle = "updatedTitle";//업데이트할 제목
+        String expectedContent = "updatedContent";//업데이트할 내용
+        //when
+        //jpa dirty checking 이용한 업데이트
+        Posts post = postsRepository.findByTitle(savedPosts.getTitle());
+        post.update(expectedTitle, expectedContent);
+        PostsResponse requestDto = new PostsResponse(post); 
         //then
-        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseEntity.getBody()).isGreaterThan(0L);
-        
-        List<Posts> all = postsRepository.findAll();
-        assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
-        assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
+        assertThat(requestDto.getTitle()).isEqualTo("updatedTitle");
+        assertThat(requestDto.getContent()).isEqualTo("updatedContent");
     }
 
     @Test
