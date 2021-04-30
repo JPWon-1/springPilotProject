@@ -11,7 +11,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.querydsl.core.types.Predicate;
+import com.start.pilotproject.domain.dto.PostsDto.PostsResponse;
 import com.start.pilotproject.domain.dto.PostsDto.PostsUpdateRequestDto;
+import com.start.pilotproject.domain.dto.PostsDto;
 import com.start.pilotproject.domain.dto.PostsSaveRequestDto;
 import com.start.pilotproject.domain.posts.Posts;
 import com.start.pilotproject.domain.posts.PostsRepository;
@@ -70,13 +72,14 @@ public class PostsRepositoryTest {
     @Test
     public void Posts_등록된다() throws Exception{
         //given
-        String title = "title2";
-        String content= "content2";
-        PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
+        String title = "title";
+        String content= "content";
+        Posts post = postsRepository.save(Posts.builder()
                 .title(title)
                 .content(content)
                 .author("author")
-                .build();
+                .build());
+        PostsResponse requestDto = new PostsResponse(post); 
         String url = "http://localhost:"+port+"/api/v1/posts";
 
         //when
