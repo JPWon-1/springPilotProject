@@ -34,8 +34,7 @@ Modify Post
 
 2021년 4월 31일 
 Modify Post Test Code & DTO : test코드에서 정상 작동 안하던 것 수정 및 dto에서 쓸데없는 builder패턴을 뺏음
-
-
+Update : fragments ( 공통으로 쓰이는 html 통합 )
 
 
 
