@@ -25,3 +25,4 @@
 - 2021년 3월 30일 : Update get : post method 추가
 - 2021년 4월 07일 : Update get : post ( feat. querydsl ) querydsl 을 이용한 get:post 추가
 - 2021년 4월 31일 : Modify Post Test Code & DTO : test코드에서 정상 작동 안하던 것 수정 및 dto에서 쓸데없는 builder패턴을 뺏음. 그리고 공통된 부분들 fragments로 뺏음. (sidebar, navbar)
+- 2021년 5월 02일 : feat user join test : 간단하게 String email, String password를 입력한 후 회원가입을 하는 유저 테스트를 작성 함. 이후에는 이메일 밸리데이션, 회원가입 밸리데이션 등을 추가해야 함. 그 외에 dto를 controller와 같은 폴더에 두었음. 그리고 repository 폴더를 생성하여 controller, service , repository , domain 의 4가지 폴더로 구분하여 좀 더 프로젝트를 보기 쉽게 작성함.
