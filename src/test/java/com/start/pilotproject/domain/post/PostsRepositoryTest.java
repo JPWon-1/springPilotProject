@@ -1,4 +1,4 @@
-package com.start.pilotproject.domain.Posts;
+package com.start.pilotproject.domain.post;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
