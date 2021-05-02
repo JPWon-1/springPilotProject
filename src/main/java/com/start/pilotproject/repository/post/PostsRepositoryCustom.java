@@ -1,4 +1,6 @@
-package com.start.pilotproject.domain.posts;
+package com.start.pilotproject.repository.post;
+
+import com.start.pilotproject.domain.posts.Posts;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;

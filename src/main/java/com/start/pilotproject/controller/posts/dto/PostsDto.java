@@ -1,4 +1,4 @@
-package com.start.pilotproject.domain.dto;
+package com.start.pilotproject.controller.posts.dto;
 
 import java.time.LocalDateTime;
 

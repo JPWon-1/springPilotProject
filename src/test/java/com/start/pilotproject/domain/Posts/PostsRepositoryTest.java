@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Optional;
 
 import com.querydsl.core.types.Predicate;
-import com.start.pilotproject.domain.dto.PostsDto.PostsResponse;
+import com.start.pilotproject.controller.posts.dto.PostsDto.PostsResponse;
 import com.start.pilotproject.domain.posts.Posts;
-import com.start.pilotproject.domain.posts.PostsRepository;
-import com.start.pilotproject.domain.posts.PostsRepositoryCustom;
 import com.start.pilotproject.domain.posts.QPosts;
+import com.start.pilotproject.repository.post.PostsRepository;
+import com.start.pilotproject.repository.post.PostsRepositoryCustom;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;

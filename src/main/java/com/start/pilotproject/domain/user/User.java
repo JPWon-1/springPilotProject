@@ -17,12 +17,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 public class User extends BaseTimeEntity {
-    
-
     @Id
     @SequenceGenerator(name="user_seq", sequenceName="user_seq", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="user_seq")
-    private Long id;
+    private Long seq;
+
+    @Column
+    private Email email;
     
     @Column
     private String name;
@@ -31,13 +32,13 @@ public class User extends BaseTimeEntity {
     @Column(nullable=false)
     private Role role;
 
-    public User(Long id, String name, Role role) {
-        this.id = id;
+    public User(Email email, String name, Role role) {
+        this.email = email;
         this.name = name;
         this.role = role;
     }
     public static class Builder{
-        private Long id;
+        private Email email;
         private String name;
         private Role role;
 
@@ -45,13 +46,13 @@ public class User extends BaseTimeEntity {
         }
 
         public Builder(User user){
-            this.id = user.id;
+            this.email = user.email;
             this.name = user.name;
             this.role = user.role;
         }
 
-        public Builder id(Long id){
-            this.id = id;
+        public Builder email(Email email){
+            this.email = email;
             return this;
         }
         public Builder name(String name){
@@ -63,7 +64,7 @@ public class User extends BaseTimeEntity {
             return this;
         }
         public User build(){
-            return new User(id, name , role);
+            return new User(email, name , role);
         }
 
     }

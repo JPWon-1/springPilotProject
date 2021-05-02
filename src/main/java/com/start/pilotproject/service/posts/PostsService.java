@@ -8,12 +8,12 @@ import javax.persistence.PersistenceContext;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.start.pilotproject.domain.dto.PostsDto.PostsResponse;
-import com.start.pilotproject.domain.dto.PostsDto.PostsUpdateRequestDto;
-import com.start.pilotproject.domain.dto.PostsSaveRequestDto;
+import com.start.pilotproject.controller.posts.dto.PostsSaveRequestDto;
+import com.start.pilotproject.controller.posts.dto.PostsDto.PostsResponse;
+import com.start.pilotproject.controller.posts.dto.PostsDto.PostsUpdateRequestDto;
 import com.start.pilotproject.domain.posts.Posts;
-import com.start.pilotproject.domain.posts.PostsRepository;
 import com.start.pilotproject.domain.posts.QPosts;
+import com.start.pilotproject.repository.post.PostsRepository;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

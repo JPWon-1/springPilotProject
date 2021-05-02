@@ -1,9 +1,9 @@
 package com.start.pilotproject.controller.posts;
 
+import com.start.pilotproject.controller.posts.dto.PostsSaveRequestDto;
+import com.start.pilotproject.controller.posts.dto.PostsDto.PostsResponse;
+import com.start.pilotproject.controller.posts.dto.PostsDto.PostsUpdateRequestDto;
 import com.start.pilotproject.service.posts.PostsService;
-import com.start.pilotproject.domain.dto.PostsDto.PostsUpdateRequestDto;
-import com.start.pilotproject.domain.dto.PostsDto.PostsResponse;
-import com.start.pilotproject.domain.dto.PostsSaveRequestDto;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
