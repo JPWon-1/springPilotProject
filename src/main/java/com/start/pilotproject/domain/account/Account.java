@@ -1,4 +1,4 @@
-package com.start.pilotproject.domain.user;
+package com.start.pilotproject.domain.account;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @Entity
-public class User extends BaseTimeEntity {
+public class Account extends BaseTimeEntity {
     @Id
     @SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
@@ -34,33 +34,11 @@ public class User extends BaseTimeEntity {
     @Enumerated
     // @Column(nullable = false)
     private Role role;
-
-    public User(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
-
-    public User(String email, String name, String password, Role role) {
-        this.email = email;
-        this.name = name;
-        this.role = role;
-    }
-
     public static class Builder {
         private String email;
         private String name;
         private String password;
         private Role role;
-
-        public Builder() {
-        }
-
-        public Builder(User user) {
-            this.email = user.email;
-            this.name = user.name;
-            this.password = user.password;
-            this.role = user.role;
-        }
 
         public Builder email(String email) {
             this.email = email;
@@ -81,9 +59,14 @@ public class User extends BaseTimeEntity {
             return this;
         }
 
-        public User build() {
-            return new User(email, name, password, role);
-        }
-
+		public Account build() {
+			return new Account(this);
+		}
+    }
+    private Account(Builder builder){
+        email = builder.email;
+        name = builder.name;
+        password = builder.password;
+        role = builder.role;
     }
 }

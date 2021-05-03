@@ -1,4 +1,4 @@
-package com.start.pilotproject.domain.user;
+package com.start.pilotproject.domain.account;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
