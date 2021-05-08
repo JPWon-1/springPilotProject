@@ -1,8 +1,8 @@
 package com.start.pilotproject.domain.user;
 
-import com.start.pilotproject.domain.account.Account;
-import com.start.pilotproject.repository.account.AccountRepository;
-import com.start.pilotproject.service.account.AccountService;
+import com.start.pilotproject.domain.member.Member;
+import com.start.pilotproject.repository.member.MemberRepository;
+import com.start.pilotproject.service.member.MemberService;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,12 +13,12 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class AccountRestApiTest {
+public class MemberRestApiTest {
     @Autowired
-    AccountService userService;
+    MemberService userService;
 
     @Autowired
-    AccountRepository userRepository;
+    MemberRepository memberRepository;
 
     @Test
     @DisplayName("회원 가입")
@@ -27,13 +27,7 @@ public class AccountRestApiTest {
         String email = "testAddress";
         String password = "testPassword";
         //when
-        Account user = new Account.Builder()
-            .email(email)
-            .password(password)
-            .build();
         //then
-        Account user2 = userRepository.save(user);
-        System.out.println(user2);
 
     }
 }

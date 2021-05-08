@@ -1,4 +1,4 @@
-package com.start.pilotproject.domain.account;
+package com.start.pilotproject.domain.member;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -10,14 +10,14 @@ import com.querydsl.core.types.Path;
 
 
 /**
- * QAccount is a Querydsl query type for Account
+ * QMember is a Querydsl query type for Member
  */
 @Generated("com.querydsl.codegen.EntitySerializer")
-public class QAccount extends EntityPathBase<Account> {
+public class QMember extends EntityPathBase<Member> {
 
-    private static final long serialVersionUID = 1789938070L;
+    private static final long serialVersionUID = 68707672L;
 
-    public static final QAccount account = new QAccount("account");
+    public static final QMember member = new QMember("member1");
 
     public final com.start.pilotproject.util.QBaseTimeEntity _super = new com.start.pilotproject.util.QBaseTimeEntity(this);
 
@@ -37,16 +37,16 @@ public class QAccount extends EntityPathBase<Account> {
 
     public final NumberPath<Long> seq = createNumber("seq", Long.class);
 
-    public QAccount(String variable) {
-        super(Account.class, forVariable(variable));
+    public QMember(String variable) {
+        super(Member.class, forVariable(variable));
     }
 
-    public QAccount(Path<? extends Account> path) {
+    public QMember(Path<? extends Member> path) {
         super(path.getType(), path.getMetadata());
     }
 
-    public QAccount(PathMetadata metadata) {
-        super(Account.class, metadata);
+    public QMember(PathMetadata metadata) {
+        super(Member.class, metadata);
     }
 
 }
