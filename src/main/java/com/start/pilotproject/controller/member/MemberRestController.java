@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MemberRestController {
 
-    @Autowired
-    MemberService memberService;
+    // @Autowired
+    // MemberService memberService;
 
     // @GetMapping(value = "/create")
     // public Member save() {

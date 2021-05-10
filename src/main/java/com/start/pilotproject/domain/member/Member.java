@@ -27,8 +27,8 @@ import lombok.NoArgsConstructor;
 public class Member extends BaseTimeEntity implements UserDetails {
 
     @Id
-    @SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
+    @SequenceGenerator(name = "member_seq", sequenceName = "member_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq")
     private Long id;
 
     @Column
@@ -46,9 +46,9 @@ public class Member extends BaseTimeEntity implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private Boolean locked;
+    private Boolean locked = false;;
 
-    private Boolean enabled;
+    private Boolean enabled = false;;
 
     public Member(String firstName, 
                   String lastName, 

@@ -1,11 +1,15 @@
 package com.start.pilotproject.service.member;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 import javax.transaction.Transactional;
 
 import com.start.pilotproject.domain.member.Member;
+import com.start.pilotproject.domain.registration.token.ConfirmationToken;
 import com.start.pilotproject.repository.member.MemberRepository;
+import com.start.pilotproject.service.registration.token.ConfirmationTokenService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,6 +32,9 @@ public class MemberService implements UserDetailsService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Autowired
+    private ConfirmationTokenService confirmationTokenService;
+
     // join
     @Transactional
     public Member save(Member member) {
@@ -48,9 +55,22 @@ public class MemberService implements UserDetailsService {
         String encodedPassword = bCryptPasswordEncoder.encode(member.getPassword());
         member.setPassword(encodedPassword);
         memberRepository.save(member);
-        List<Member> allmember = memberRepository.findAll();
         // TODO: Send confirmation token
-        // https://youtu.be/QwQuro7ekvc
-        return "it works!";
+        String token = UUID.randomUUID().toString();
+        ConfirmationToken confirmationToken = new ConfirmationToken(
+            token,
+            LocalDateTime.now(),
+            LocalDateTime.now().plusMinutes(15),
+            member
+        );
+        confirmationTokenService.saveConfirmationToken(confirmationToken);
+
+        //TODO : send email
+
+        return token;
+    }
+
+    public int enableMember(String email) { 
+        return memberRepository.enableMember(email);
     }
 }

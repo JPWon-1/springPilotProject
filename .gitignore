@@ -35,3 +35,9 @@ out/
 
 ### VS Code ###
 .vscode/
+src/main/generated/com/start/pilotproject/domain/member/QMember.java
+src/main/generated/
+*/generated/
+*/generated
+*/generated/*
+**/generated/**
