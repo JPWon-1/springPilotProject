@@ -41,9 +41,9 @@ public class Member extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private Boolean locked;
+    private Boolean locked = false;;
 
-    private Boolean enabled;
+    private Boolean enabled = false;;
 
     @Builder
     public Member(String firstName, 
