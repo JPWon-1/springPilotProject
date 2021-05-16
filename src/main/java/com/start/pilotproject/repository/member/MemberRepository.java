@@ -13,6 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 public interface MemberRepository extends JpaRepository<Member,Long>{
 
     @Transactional(readOnly = true)
-    Optional<Member> findByEmail(String email);
+    Optional<Member> findByEmail(String email);//Jpa Query Methods
     
 }

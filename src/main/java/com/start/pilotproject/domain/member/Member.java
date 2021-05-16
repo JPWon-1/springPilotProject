@@ -1,7 +1,5 @@
 package com.start.pilotproject.domain.member;
 
-import java.util.Collection;
-import java.util.Collections;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,21 +12,18 @@ import javax.persistence.SequenceGenerator;
 
 import com.start.pilotproject.util.BaseTimeEntity;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
 @Entity
-public class Member extends BaseTimeEntity implements UserDetails {
+public class Member extends BaseTimeEntity {
 
     @Id
-    @SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
+    @SequenceGenerator(name = "member_seq", sequenceName = "member_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq")
     private Long id;
 
     @Column
@@ -50,6 +45,7 @@ public class Member extends BaseTimeEntity implements UserDetails {
 
     private Boolean enabled;
 
+    @Builder
     public Member(String firstName, 
                   String lastName, 
                   String email, 
@@ -62,38 +58,7 @@ public class Member extends BaseTimeEntity implements UserDetails {
         this.role = role;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
-        return Collections.singletonList(authority);
-    }
-    
-    @Override
-    public String getUsername() {
-        return email; //이메일을 리턴함.
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return !locked;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setPassword(String password) {
+    public void bcryptionPassword(String password){
         this.password = password;
     }
 }

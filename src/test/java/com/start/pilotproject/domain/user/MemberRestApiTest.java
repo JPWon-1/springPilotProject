@@ -2,7 +2,6 @@ package com.start.pilotproject.domain.user;
 
 import com.start.pilotproject.domain.member.Member;
 import com.start.pilotproject.repository.member.MemberRepository;
-import com.start.pilotproject.service.member.MemberService;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,8 +13,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class MemberRestApiTest {
-    @Autowired
-    MemberService userService;
 
     @Autowired
     MemberRepository memberRepository;

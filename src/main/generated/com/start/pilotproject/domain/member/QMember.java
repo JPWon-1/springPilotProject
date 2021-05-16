@@ -26,16 +26,22 @@ public class QMember extends EntityPathBase<Member> {
 
     public final StringPath email = createString("email");
 
+    public final BooleanPath enabled = createBoolean("enabled");
+
+    public final StringPath firstName = createString("firstName");
+
+    public final NumberPath<Long> id = createNumber("id", Long.class);
+
+    public final StringPath lastName = createString("lastName");
+
+    public final BooleanPath locked = createBoolean("locked");
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modifiedDate = _super.modifiedDate;
-
-    public final StringPath name = createString("name");
 
     public final StringPath password = createString("password");
 
     public final EnumPath<Role> role = createEnum("role", Role.class);
-
-    public final NumberPath<Long> seq = createNumber("seq", Long.class);
 
     public QMember(String variable) {
         super(Member.class, forVariable(variable));
