@@ -16,15 +16,12 @@ var member = {
             // dataType: "json",
             contentType: "application/json;charset=utf-8",
             data: JSON.stringify(data),
-        }).done(function (data,textStatus,xhr) {
-            console.log(data);
+        }).done(function (response,textStatus,xhr) {
+            console.log(response);
             console.log(textStatus);
             alert("회원가입이 완료되었습니다.")
-        })
-        .fail(function (xhr,textStatus,errorThrown) {
-            console.log(xhr);
-            console.log(textStatus);
-            alert("회원가입에 실패했습니다.");
+        }).fail(function (response) {
+            alert(response.responseJSON.message);
         });
     },
 };

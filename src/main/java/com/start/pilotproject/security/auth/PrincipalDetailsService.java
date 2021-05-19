@@ -1,6 +1,6 @@
 package com.start.pilotproject.security.auth;
 
-import java.util.Optional;
+import java.util.Objects;
 
 
 import com.start.pilotproject.domain.member.Member;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 
 //security설정에서 ("/login");
-//login 요청이 오면 자동으로 UserDetailsService 타입으로 IoC되어있는 loadByUsername 함수가 실행된다.
+//login 요청이 오면 자동으로 UserDetailsService 타입으로 IoC되어있는 loadUserByUsername 함수가 실행된다.
 
 @Service
 public class PrincipalDetailsService implements UserDetailsService{
@@ -26,11 +26,12 @@ public class PrincipalDetailsService implements UserDetailsService{
     //시큐리티 session(Authentication(내부 UserDetails))
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<Member> memberEntity = memberRepository.findByEmail(email);
-        if(memberEntity.isPresent()){
-            return new PrincipalDetails(memberEntity.get());
-        }else{
+        //String email  <= email로 받고 싶으면 WebSecurityConfig 에서 바꿔야함. usernameParameter("email")
+        Member memberEntity = memberRepository.findByEmail(email);
+        if(Objects.isNull(memberEntity)){
             throw new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email));
+        }else{
+            return new PrincipalDetails(memberEntity);
         }
     }
     

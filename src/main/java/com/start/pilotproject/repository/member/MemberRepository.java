@@ -1,6 +1,5 @@
 package com.start.pilotproject.repository.member;
 
-import java.util.Optional;
 
 
 import com.start.pilotproject.domain.member.Member;
@@ -13,6 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 public interface MemberRepository extends JpaRepository<Member,Long>{
 
     @Transactional(readOnly = true)
-    Optional<Member> findByEmail(String email);//Jpa Query Methods
+    Member findByEmail(String email);//Jpa Query Methods
     
 }

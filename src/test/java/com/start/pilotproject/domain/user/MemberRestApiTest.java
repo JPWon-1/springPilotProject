@@ -1,6 +1,5 @@
 package com.start.pilotproject.domain.user;
 
-import com.start.pilotproject.domain.member.Member;
 import com.start.pilotproject.repository.member.MemberRepository;
 
 import org.junit.jupiter.api.DisplayName;
@@ -21,8 +20,8 @@ public class MemberRestApiTest {
     @DisplayName("회원 가입")
     public void join(){
         //given
-        String email = "testAddress";
-        String password = "testPassword";
+        // String email = "testAddress";
+        // String password = "testPassword";
         //when
         //then
 

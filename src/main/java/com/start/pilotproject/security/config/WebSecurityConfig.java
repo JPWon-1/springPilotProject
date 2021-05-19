@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity // 스프링 시큐리티 필터가 스프링 필터체인에 등록이 된다.
-@EnableGlobalMethodSecurity(securedEnabled = true)
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true) //secured 어노테이션 활성화, preAuthorize 어노테이션 활성화
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
@@ -23,13 +23,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
             .headers().frameOptions().disable().and()
         .authorizeRequests()
             .antMatchers("/","/css/**","/scss/**","/img/**","/js/**","/h2-console/**").permitAll()
-            // .antMatchers("/posts").permitAll()
-            .antMatchers("/join").permitAll()    
+            .antMatchers("/posts/write").hasRole(Role.USER.name())    
             // .antMatchers("/api/v1/**").hasRole(Role.USER.name())    
+            .antMatchers("/join").permitAll()    
             // .anyRequest().authenticated().and()
             .anyRequest().permitAll().and()
         .formLogin()
-            // .loginPage("/login")
+            .loginPage("/login")
+            .loginProcessingUrl("/login")
+            .defaultSuccessUrl("/posts")
             .usernameParameter("email")
             .permitAll().and()
         .logout()

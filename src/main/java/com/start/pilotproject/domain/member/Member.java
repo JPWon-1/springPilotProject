@@ -58,7 +58,8 @@ public class Member extends BaseTimeEntity {
         this.role = role;
     }
 
-    public void bcryptionPassword(String password){
+    public void bcryptionPasswordAndGiveRole(String password){
         this.password = password;
+        this.role = Role.USER;
     }
 }
