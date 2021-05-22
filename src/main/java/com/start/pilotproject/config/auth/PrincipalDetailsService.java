@@ -1,4 +1,4 @@
-package com.start.pilotproject.security.auth;
+package com.start.pilotproject.config.auth;
 
 import java.util.Objects;
 
@@ -24,6 +24,7 @@ public class PrincipalDetailsService implements UserDetailsService{
     private MemberRepository memberRepository;
 
     //시큐리티 session(Authentication(내부 UserDetails))
+    //함수 종료시 @AuthenticationPrincipal 어노테이션이 만들어진다!
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         //String email  <= email로 받고 싶으면 WebSecurityConfig 에서 바꿔야함. usernameParameter("email")

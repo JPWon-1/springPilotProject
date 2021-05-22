@@ -41,8 +41,10 @@ public class Member extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private Boolean locked;
+    private String provider;
+    private String providerId;
 
+    private Boolean locked;
     private Boolean enabled;
 
     @Builder
@@ -50,12 +52,17 @@ public class Member extends BaseTimeEntity {
                   String lastName, 
                   String email, 
                   String password, 
-                  Role role) {
+                  Role role,
+                  String provider,
+                  String providerId
+                  ) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.role = role;
+        this.provider = provider;
+        this.providerId = providerId;
     }
 
     public void bcryptionPasswordAndGiveRole(String password){
