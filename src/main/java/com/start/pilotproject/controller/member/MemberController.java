@@ -33,8 +33,6 @@ public class MemberController {
     public @ResponseBody String user(@AuthenticationPrincipal PrincipalDetails principalDetails) {
         System.out.println("principalDetails:"+principalDetails.getUser());
         return "user 정보 확인중..";
-        //"$2a$10$q1CMMHnG7yrg5ZUhpwm09ulZhT5BR/FFm5Hy5Z7vG3vPlKOPEua52"
-        //"$2a$10$YgH/DP..ZNG4DIBD7uh6g.u0DiMUAnIA1UzkKqNWgH2UhMdNVFB4W"
     }
 
     @GetMapping("/test/login")

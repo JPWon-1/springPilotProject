@@ -1,6 +1,11 @@
 package com.start.pilotproject.config.oauth;
 
+import java.util.Map;
+
 import com.start.pilotproject.config.auth.PrincipalDetails;
+import com.start.pilotproject.config.oauth.provider.GoogleUserInfo;
+import com.start.pilotproject.config.oauth.provider.NaverUserInfo;
+import com.start.pilotproject.config.oauth.provider.OAuth2UserInfo;
 import com.start.pilotproject.domain.member.Member;
 import com.start.pilotproject.domain.member.Role;
 import com.start.pilotproject.repository.member.MemberRepository;
@@ -32,9 +37,17 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
         //userRequest에는 resgistrationId가 있는데 이를 통해 어떤 oAuth로 로그인 했는지 알 수 있음
         //getAttributes = oauth2User.getAttributes()
         //oauth로 로그인 했을 때 회원가입 시키기
-        String provider = userRequest.getClientRegistration().getClientId();// google
-        String providerId = oauth2User.getAttribute("sub");//google sub
-        String email = oauth2User.getAttribute("email");//google sub
+        OAuth2UserInfo oAuth2UserInfo = null;
+        if(userRequest.getClientRegistration().getRegistrationId().equals("google")){
+            //구글 로그인 요청
+            oAuth2UserInfo = new GoogleUserInfo(oauth2User.getAttributes());
+        }else if(userRequest.getClientRegistration().getRegistrationId().equals("naver")){
+            oAuth2UserInfo = new NaverUserInfo((Map)oauth2User.getAttributes().get("response"));
+        }
+
+        String provider = oAuth2UserInfo.getProvider();
+        String providerId = oAuth2UserInfo.getProviderId();
+        String email = oAuth2UserInfo.getEmail();
         String password = bCryptPasswordEncoder.encode("test");
         Role role = Role.USER;
         Member memberEntity = memberRepository.findByEmail(email);
