@@ -3,7 +3,7 @@ package com.start.pilotproject.controller.member;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.start.pilotproject.config.auth.PrincipalDetails;
+// import com.start.pilotproject.config.auth.PrincipalDetails;
 import com.start.pilotproject.controller.member.dto.MemberDto;
 import com.start.pilotproject.repository.member.MemberRepository;
 import com.start.pilotproject.service.member.MemberService;
@@ -28,35 +28,17 @@ public class MemberController {
     @Autowired
     MemberRepository memberRepository;
 
-    //oauth로 로그인 하던, 일반 로그인을 하던 principalDetails로 받는것을 확인하기 위한 테스트 컨트롤러
-    @GetMapping("/user")
-    public @ResponseBody String user(@AuthenticationPrincipal PrincipalDetails principalDetails) {
-        System.out.println("principalDetails:"+principalDetails.getUser());
-        return "user 정보 확인중..";
-    }
+    // @GetMapping("/test/oauth/login")
+    // //DI(의존성 주입)
+    // public @ResponseBody String testOauthLogin(Authentication authentication,
+    //     @AuthenticationPrincipal OAuth2User oauth){
+    //     System.out.println("/test/login============");
+    //     OAuth2User oauth2User = (OAuth2User)authentication.getPrincipal();//다운캐스팅 해야함
 
-    @GetMapping("/test/login")
-    //DI(의존성 주입)
-    public @ResponseBody String loginTest(Authentication authentication, 
-        @AuthenticationPrincipal PrincipalDetails userDetails){
-        System.out.println("/test/login============");
-        PrincipalDetails principalDetails = (PrincipalDetails)authentication.getPrincipal();//다운 캐스팅 
-        System.out.println("authentication:"+principalDetails);
-        System.out.println("userEmail:"+userDetails);
-        return "세션 정보 확인하기";
-    }
-
-    @GetMapping("/test/oauth/login")
-    //DI(의존성 주입)
-    public @ResponseBody String testOauthLogin(Authentication authentication,
-        @AuthenticationPrincipal OAuth2User oauth){
-        System.out.println("/test/login============");
-        OAuth2User oauth2User = (OAuth2User)authentication.getPrincipal();//다운캐스팅 해야함
-
-        System.out.println(oauth2User);
-        System.out.println("oauth2User:"+oauth.getAttributes());
-        return "OAuth2 세션 정보 확인하기";
-    }
+    //     System.out.println(oauth2User);
+    //     System.out.println("oauth2User:"+oauth.getAttributes());
+    //     return "OAuth2 세션 정보 확인하기";
+    // }
 
     //스프링 시큐리티는 자기만의 시큐리티 세션을 가지고 있음
     //세션안에 시큐리티 세션이 따로 있음
@@ -88,16 +70,16 @@ public class MemberController {
         return response;
     }
 
-    @Secured("ROLE_ADMMIN")
-    @GetMapping("/info")
-    public @ResponseBody String info(){
-        return "개인정보";
-    }
+    // @Secured("ROLE_ADMMIN")
+    // @GetMapping("/info")
+    // public @ResponseBody String info(){
+    //     return "개인정보";
+    // }
 
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole(ROLE_ADMIN)")
-    @GetMapping("/data")
-    public @ResponseBody String data(){
-        return "중요한 데이터";
-    }
+    // @PreAuthorize("hasRole('ROLE_USER') or hasRole(ROLE_ADMIN)")
+    // @GetMapping("/data")
+    // public @ResponseBody String data(){
+    //     return "중요한 데이터";
+    // }
 
 }

@@ -1,8 +1,5 @@
 package com.start.pilotproject.config.auth;
 
-import java.util.Objects;
-
-
 import com.start.pilotproject.domain.member.Member;
 import com.start.pilotproject.repository.member.MemberRepository;
 
@@ -28,12 +25,9 @@ public class PrincipalDetailsService implements UserDetailsService{
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         //String email  <= email로 받고 싶으면 WebSecurityConfig 에서 바꿔야함. usernameParameter("email")
-        Member memberEntity = memberRepository.findByEmail(email);
-        if(Objects.isNull(memberEntity)){
-            throw new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email));
-        }else{
-            return new PrincipalDetails(memberEntity);
-        }
+        Member memberEntity = memberRepository.findByEmail(email)
+                .orElseThrow(()->new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email)));
+        return new PrincipalDetails(memberEntity);
     }
     
     

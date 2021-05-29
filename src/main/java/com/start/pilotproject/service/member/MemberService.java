@@ -2,6 +2,7 @@ package com.start.pilotproject.service.member;
 
 
 import java.util.Objects;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -22,9 +23,8 @@ public class MemberService {
 
     @Transactional
     public Long signUp(Member newMember) {
-        Member oldMember = memberRepository.findByEmail(newMember.getEmail());
-        boolean isExist = Objects.nonNull(oldMember);
-        if(isExist) {
+        Optional<Member> oldMember = memberRepository.findByEmail(newMember.getEmail());
+        if(oldMember.isPresent()){
             throw new IllegalStateException("이메일이 이미 존재합니다.");
         }
         String encodedPassword = bCryptPasswordEncoder.encode(newMember.getPassword());
