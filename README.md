@@ -40,5 +40,6 @@
 @Secured 와 @preAuthorize 어노테이션을 활성화 시켜 주었다.
 - [<2021년 5월 22일>](projectDiary/2021-05-22.md) : 소셜 로그인 oAuth를 구현해 보았다.
 - [<2021년 5월 23일>](projectDiary/2021-05-23.md) : 많은 트라이 끝에 일반 회원가입과 oAuth(google,naver)까지 로그인 완료 하였다. 이후엔 JWT에 대해 알아볼 것이다.
+- [<2021년 5월 29일>](projectDiary/2021-05-29.md) : JWT기반 세션관리를 끝냈다. TODO.exception처리, 코드정리, JWT OAuth
 
 
