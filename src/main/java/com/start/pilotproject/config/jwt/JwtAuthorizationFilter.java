@@ -1,8 +1,6 @@
 package com.start.pilotproject.config.jwt;
 
 import java.io.IOException;
-import java.util.Objects;
-import java.util.Optional;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;

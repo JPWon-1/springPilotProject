@@ -9,11 +9,6 @@ import com.start.pilotproject.repository.member.MemberRepository;
 import com.start.pilotproject.service.member.MemberService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -52,10 +47,15 @@ public class MemberController {
     //다형성을 이용하여 두 객체를 묶는다!
 
 
-    @GetMapping("/login")
+    @GetMapping("/loginForm")
     public String loginPage() {
         return "login";
     }
+
+    // @PostMapping("/login")
+    // public String login() {
+    //     return "login";
+    // }
 
     @GetMapping("/join")
     public String joinPage() {

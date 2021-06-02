@@ -4,6 +4,9 @@ var member = {
         $("#signUp").on("click", function () {
             _this.save();
         });
+        $("#loginBtn").on("click", function () {
+            _this.login();
+        });
     },
     save: function () {
         var data = {
@@ -24,5 +27,24 @@ var member = {
             alert(response.responseJSON.message);
         });
     },
+    login: function (){
+        var data = {
+            email: $("#email").val(),
+            password: $("#password").val(),
+        };
+        $.ajax({
+            type: "POST",
+            url: "/login",
+            // dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            data: JSON.stringify(data),
+        }).done(function (response,textStatus,xhr) {
+            console.log(response);
+            console.log(textStatus);
+            alert("로그인 되었습니다.")
+        }).fail(function (response) {
+            alert(response.responseJSON.message);
+        });
+    }
 };
 member.init();
