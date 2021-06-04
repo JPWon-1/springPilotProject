@@ -32,7 +32,6 @@
                             You have been logged out.
                         </div>
                         <h5 class="card-title text-center">Sign In</h5>
-                        <form class="form-signin" th:action="@{/login}" method="post">
                             <div class="form-label-group">
                                 <input type="text" name="email" id="email" class="form-control" 
                                        placeholder="Email address" required autofocus>
@@ -43,7 +42,7 @@
                                     placeholder="Password" required>
                                 <label for="inputPassword">Password</label>
                             </div>
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">
+                            <button id="loginBtn" class="btn btn-lg btn-primary btn-block text-uppercase">
                                 Sign in
                             </button>
                             <a href="/join">회원이 아니세요?</a>
@@ -52,12 +51,16 @@
                                 <i class="fab fa-google mr-2"></i> Sign in with Google</a>
                             <a href="/oauth2/authorization/naver" class="btn btn-lg btn-google btn-block text-uppercase" type="submit">
                                 <i class="fab fa-naver mr-2"></i> Sign in with 네이버</a>
-                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="/js/core/jquery.min.js"></script>
+    <script src="/js/core/popper.min.js"></script>
+    <script src="/js/core/bootstrap-material-design.min.js"></script>
+    <!--   Core JS Files   -->
+    <script src="/js/view/member.js"></script>
 </body>
 
 </html>
