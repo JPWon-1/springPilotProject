@@ -83,8 +83,14 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withClaim("id", principalDetails.getUser().getEmail())
                 .withClaim("username", principalDetails.getUser().getFirstName())
                 .sign(Algorithm.HMAC512(JwtProperties.SECRET));
-        response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX+jwtToken);
-        response.getWriter().write(jwtToken);
+
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(
+                "{\"" + JwtProperties.HEADER_STRING + "\":\"" + JwtProperties.TOKEN_PREFIX+jwtToken + "\"}"
+        );
+        // response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX+jwtToken);
+        // response.getWriter().write(jwtToken);
         response.getWriter().flush();
     }
 }

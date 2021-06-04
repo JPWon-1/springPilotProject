@@ -1,6 +1,17 @@
 var post = {
     init: function () {
+        var jwt = localStorage.getItem('token');
+        console.log(jwt)
+        /* set ajax default value */
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                xhr.setRequestHeader("Authorization", jwt);
+            },
+        });
         var _this = this;
+        $("#btn-write").on("click",function () {
+            _this.toWrite();
+        });
         $("#btn-save").on("click", function () {
             _this.save();
         });
@@ -12,7 +23,23 @@ var post = {
         });
         $(".postId").on("click", function () {
             _this.getData(this);
-        })
+        });
+
+    },
+    toWrite: function () {
+        console.log(localStorage.getItem("token"))
+        $.ajax({
+            headers: {
+                "content-type": "application/json",
+                Authorization: localStorage.getItem("token")
+            },
+            type: "GET",
+            url: "/posts/write",
+        }).done(function () {
+            window.location.href = "/posts/write";
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+        });
     },
     save: function () {
         var data = {
@@ -28,8 +55,7 @@ var post = {
         }).done(function () {
             alert("글이 등록되었습니다.");
             window.location.href = "/posts";
-        })
-        .fail(function (error) {
+        }).fail(function (error) {
             alert(JSON.stringify(error));
         });
     },
@@ -49,8 +75,7 @@ var post = {
         }).done(function () {
             alert("글이 수정되었습니다.");
             window.location.href = "/posts/" + id;
-        })
-        .fail(function (error) {
+        }).fail(function (error) {
             alert(JSON.stringify(error));
         });
     },
@@ -64,8 +89,7 @@ var post = {
         }).done(function () {
                 alert("글이 삭제되었습니다.");
                 window.location.href = "/posts";
-        })
-        .fail(function (error) {
+        }).fail(function (error) {
             alert(JSON.stringify(error));
         });
     },

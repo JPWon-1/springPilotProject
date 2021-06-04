@@ -42,6 +42,10 @@ var member = {
             console.log(response);
             console.log(textStatus);
             alert("로그인 되었습니다.")
+
+            localStorage.setItem('token',response.Authorization);
+
+
         }).fail(function (response) {
             alert(response.responseJSON.message);
         });
