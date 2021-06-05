@@ -8,6 +8,7 @@ import com.start.pilotproject.repository.member.MemberRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -26,6 +27,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final MemberRepository memberRepository;
 
     @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/",
+                                   "/css/**",
+                                   "/scss/**",
+                                   "/img/**",
+                                   "/js/**",
+                                   "/h2-console/**");	
+    }   
+
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
         // http.addFilterBefore(new MyFilter3(), SecurityContextPersistenceFilter.class);
         http.csrf().disable();
@@ -36,9 +47,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .addFilter(new JwtAuthenticationFilter(authenticationManager()))//formLogin.disable해놓았기에 addFilter로 userNamePasswordAuthenticationFilter를 직접 활성화 시켜줌 
         .addFilter(new JwtAuthorizationFilter(authenticationManager(),memberRepository))
         .authorizeRequests()
-            .antMatchers("/","/css/**","/scss/**","/img/**","/js/**","/h2-console/**").permitAll()
-            .antMatchers("/api/v1/user/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-            .antMatchers("/api/v1/manager/**").hasRole(Role.ADMIN.name())
             .antMatchers("/posts/write").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
             .anyRequest().permitAll();
     }
