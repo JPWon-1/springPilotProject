@@ -2,7 +2,6 @@ package com.start.pilotproject.config;
 
 import com.start.pilotproject.config.jwt.JwtAuthenticationFilter;
 import com.start.pilotproject.config.jwt.JwtAuthorizationFilter;
-import com.start.pilotproject.domain.member.Role;
 import com.start.pilotproject.repository.member.MemberRepository;
 
 import org.springframework.context.annotation.Bean;
