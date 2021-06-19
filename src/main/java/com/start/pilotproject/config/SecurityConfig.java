@@ -46,7 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .addFilter(new JwtAuthenticationFilter(authenticationManager()))//formLogin.disable해놓았기에 addFilter로 userNamePasswordAuthenticationFilter를 직접 활성화 시켜줌 
         .addFilter(new JwtAuthorizationFilter(authenticationManager(),memberRepository))
         .authorizeRequests()
-            .antMatchers("/posts/write").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+            .antMatchers("/api/v1/posts").authenticated()
+            // .antMatchers("/posts/write").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
             .anyRequest().permitAll();
     }
 
