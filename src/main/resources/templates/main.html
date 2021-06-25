@@ -1,32 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>
-    Spring Init Project v1
-  </title>
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
-    name='viewport' />
+  <title>JP's Portfolio</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="/css/common.css" />
+  <link rel="stylesheet" type="text/css" href="/css/main.css" />
 </head>
 
-<body class="offline-doc dark-edition">
-  <th:block th:replace="fragments/fragments::navbar"></th:block>
-  <div class="page-header clear-filter">
-    <div class="content-center">
-      <div class="col-md-8 ml-auto mr-auto">
-        <div class="brand">
-          <h1 class="title">
-            Spring Init Project
+<body>
+  <section id="profile_img">
+    <div>
+      <div>
+        <div>
+          <h1>Hello, I'm
+            <strong>JP</strong>
           </h1>
-          <h3 class="description">V1</h3>
-          <br />
-          <a href="/posts" class="btn btn-primary btn-round btn-lg">Take a look</a>
+          <strong>and this is My Portfolio</strong>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+  <section id="about_me">
+    <div>
+      <div>
+        <h1>About Me</h1>
+      </div>
+      <div>
+        <h1>노력하는 사람</h1>
+        <section>
+          <p>어릴때 부터 호기심이 많은 성격에 만들어 보았던 간단한 계산기 프로그램으로 무언가를 만드는 것의 재미를 느끼게 되었고 그때부터 개발자를 꿈꾸게 되었습니다.<br>계속해서 완성도 높은 코드,
+            그리고
+            완성도 높은 UI를 위해 매일 고뇌하는 사람이 되도록 하겠습니다.<br>잘부탁드립니다.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+  <section id="skill">
+  </section>
+  <section id="project">
+  </section>
+  <section id="links">
+  </section>
+  <section id="takeAlook">
+    <a href="/posts" class="btn btn-primary btn-round btn-lg">Take a look</a>
+  </section>
+
+
+
+  
+  <script src="/js/main.js"></script>
 </body>
 
 </html>
