@@ -11,8 +11,8 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.start.pilotproject.controller.posts.dto.PostsSaveRequestDto;
 import com.start.pilotproject.controller.posts.dto.PostsDto.PostsResponse;
 import com.start.pilotproject.controller.posts.dto.PostsDto.PostsUpdateRequestDto;
-import com.start.pilotproject.domain.posts.Posts;
-import com.start.pilotproject.domain.posts.QPosts;
+import com.start.pilotproject.domain.posts.Post;
+import com.start.pilotproject.domain.posts.QPost;
 import com.start.pilotproject.repository.post.PostsRepository;
 
 import org.springframework.stereotype.Service;
@@ -38,16 +38,16 @@ public class PostsService {
     @Transactional(readOnly = true)
     public PostsResponse getOne(Long id){
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
-        QPosts posts = QPosts.posts; 
-        return queryFactory.from(posts)
+        QPost post = QPost.post; 
+        return queryFactory.from(post)
             .select(Projections.fields(PostsResponse.class,
-                posts.id,
-                posts.author,
-                posts.title,
-                posts.content,
-                posts.createdDate,
-                posts.modifiedDate
-            )).where(posts.id.eq(id))
+                post.id,
+                post.author,
+                post.title,
+                post.content,
+                post.createdDate,
+                post.modifiedDate
+            )).where(post.id.eq(id))
             .fetchOne();
     }
 
@@ -58,7 +58,7 @@ public class PostsService {
     
     @Transactional
     public void delete(Long id){
-        Posts posts = postsRepository.findById(id)
+        Post posts = postsRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
         postsRepository.delete(posts);
     }
@@ -66,7 +66,7 @@ public class PostsService {
 
     @Transactional
     public Long update(Long id, PostsUpdateRequestDto requestDto){
-        Posts posts = postsRepository.findById(id).orElseThrow(
+        Post posts = postsRepository.findById(id).orElseThrow(
             ()->new IllegalArgumentException("해당 게시글이 없습니다"));
         posts.update(requestDto.getTitle(), requestDto.getContent());
         return id;

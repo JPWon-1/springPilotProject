@@ -2,7 +2,7 @@ package com.start.pilotproject.controller.posts.dto;
 
 import java.time.LocalDateTime;
 
-import com.start.pilotproject.domain.posts.Posts;
+import com.start.pilotproject.domain.posts.Post;
 
 
 import lombok.Getter;
@@ -20,7 +20,7 @@ public class PostsDto {
         private LocalDateTime modifiedDate;
         private LocalDateTime createdDate;
 
-        public PostsResponse(Posts entity){
+        public PostsResponse(Post entity){
             this.id = entity.getId();
             this.title = entity.getTitle();
             this.author = entity.getAuthor();

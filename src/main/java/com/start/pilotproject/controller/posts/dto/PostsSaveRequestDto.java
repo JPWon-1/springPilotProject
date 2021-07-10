@@ -1,7 +1,7 @@
 package com.start.pilotproject.controller.posts.dto;
 
 
-import com.start.pilotproject.domain.posts.Posts;
+import com.start.pilotproject.domain.posts.Post;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,8 +13,8 @@ public class PostsSaveRequestDto {
     private String content;
     private String author;
 
-    public Posts toEntity(){
-        return Posts.builder()
+    public Post toEntity(){
+        return Post.builder()
                 .title(title)
                 .content(content)
                 .author(author)

@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Component
 @Entity
-public class Posts extends BaseTimeEntity{
+public class Post extends BaseTimeEntity{
     @Id
     @SequenceGenerator(name="post_seq", sequenceName="post_seq", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="post_seq")
@@ -35,7 +35,7 @@ public class Posts extends BaseTimeEntity{
     private String author;
 
     @Builder
-    public Posts(String title, String content, String author) {
+    public Post(String title, String content, String author) {
         this.title = title;
         this.content = content;
         this.author = author;

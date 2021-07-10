@@ -8,8 +8,8 @@ import java.util.Optional;
 
 import com.querydsl.core.types.Predicate;
 import com.start.pilotproject.controller.posts.dto.PostsDto.PostsResponse;
-import com.start.pilotproject.domain.posts.Posts;
-import com.start.pilotproject.domain.posts.QPosts;
+import com.start.pilotproject.domain.posts.Post;
+import com.start.pilotproject.domain.posts.QPost;
 import com.start.pilotproject.repository.post.PostsRepository;
 import com.start.pilotproject.repository.post.PostsRepositoryCustom;
 
@@ -43,9 +43,9 @@ public class PostsRepositoryTest {
         // given
         String title = "이것은 테스트입니다";
         String content = "content2";
-        postsRepository.save(Posts.builder().title(title).content(content).author("jp@gmail.com").build());
+        postsRepository.save(Post.builder().title(title).content(content).author("jp@gmail.com").build());
         // when
-        Posts post = postsRepository.findByTitle(title);
+        Post post = postsRepository.findByTitle(title);
 
         // then
         assertThat(post.getTitle()).isEqualTo(title);
@@ -57,7 +57,7 @@ public class PostsRepositoryTest {
     //     // given
     //     String title = "title";
     //     String content = "content";
-    //     List<Posts> all = postsRepository.findAll();
+    //     List<Post> all = postsRepository.findAll();
     //     assertThat(all.get(0).getTitle()).isEqualTo(title);
     //     assertThat(all.get(0).getContent()).isEqualTo(content);
     // }
@@ -65,13 +65,13 @@ public class PostsRepositoryTest {
     @Test
     public void Posts_수정된다() {
         // given
-        Posts savedPosts = postsRepository.save(
-                Posts.builder().title("beforeUpdateTitle").content("beforeUpdateContent").author("author").build());
+        Post savedPosts = postsRepository.save(
+                Post.builder().title("beforeUpdateTitle").content("beforeUpdateContent").author("author").build());
         String expectedTitle = "updatedTitle";// 업데이트할 제목
         String expectedContent = "updatedContent";// 업데이트할 내용
         // when
         // jpa dirty checking 이용한 업데이트
-        Posts post = postsRepository.findByTitle(savedPosts.getTitle());
+        Post post = postsRepository.findByTitle(savedPosts.getTitle());
         post.update(expectedTitle, expectedContent);
         PostsResponse requestDto = new PostsResponse(post);
         // then
@@ -83,11 +83,11 @@ public class PostsRepositoryTest {
     public void BaseTimeEntity_등록() {
         // given
         LocalDateTime now = LocalDateTime.of(2019, 6, 4, 0, 0, 0);
-        postsRepository.save(Posts.builder().title("title").content("content").author("author").build());
+        postsRepository.save(Post.builder().title("title").content("content").author("author").build());
         // when
-        List<Posts> postsList = postsRepository.findAll();
+        List<Post> postsList = postsRepository.findAll();
         // then
-        Posts posts = postsList.get(0);
+        Post posts = postsList.get(0);
 
         System.out.println(">>>>>>>createDate=" + posts.getCreatedDate() + ",+modifiedDate=" + posts.getModifiedDate());
         assertThat(posts.getCreatedDate()).isAfter(now);
@@ -97,9 +97,9 @@ public class PostsRepositoryTest {
 
     @Test
     public void 아이디로_찾는다() {
-        QPosts posts = QPosts.posts;
+        QPost posts = QPost.post;
         Predicate predicate = posts.author.eq("jj");
-        Optional<Posts> post = postsRepositoryCustom.findOne(predicate);
+        Optional<Post> post = postsRepositoryCustom.findOne(predicate);
         System.out.println("결과!?" + post);
 
     }
