@@ -9,15 +9,12 @@ import javax.persistence.SequenceGenerator;
 
 import com.start.pilotproject.util.BaseTimeEntity;
 
-import org.springframework.stereotype.Component;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-@Component
 @Entity
 public class Post extends BaseTimeEntity{
     @Id

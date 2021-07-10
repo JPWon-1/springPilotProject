@@ -1,6 +1,9 @@
 package com.start.pilotproject.domain.member;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
+import com.start.pilotproject.domain.comment.Comment;
 import com.start.pilotproject.util.BaseTimeEntity;
 
 import lombok.Builder;
@@ -37,6 +41,9 @@ public class Member extends BaseTimeEntity {
 
     @Column
     private String password;
+
+    @Column
+    private List<Comment> comments = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     private Role role;

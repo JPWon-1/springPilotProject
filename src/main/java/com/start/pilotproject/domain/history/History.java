@@ -1,0 +1,42 @@
+package com.start.pilotproject.domain.history;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+
+import com.start.pilotproject.domain.comment.Comment;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Getter
+@NoArgsConstructor
+@Entity
+public class History {
+    @Id
+    @SequenceGenerator(name="history_seq", sequenceName="history_seq", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="history_seq")
+    private Long id;
+
+    @Column
+    private LocalDateTime date;
+
+    @Column
+    private String content;
+
+    @Column
+    private String source;
+
+    @OneToMany
+    @JoinColumn(name = "history_id")
+    private List<Comment> comments = new ArrayList<>();
+}
