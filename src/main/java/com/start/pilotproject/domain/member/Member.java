@@ -11,6 +11,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import com.start.pilotproject.domain.comment.Comment;
@@ -42,7 +44,8 @@ public class Member extends BaseTimeEntity {
     @Column
     private String password;
 
-    @Column
+    @OneToMany
+    @JoinColumn(name = "member_id")
     private List<Comment> comments = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
