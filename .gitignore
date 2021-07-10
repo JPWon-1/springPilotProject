@@ -36,3 +36,6 @@ out/
 .vscode/
 src/main/resources/application-oauth.properties
 src/main/generated
+**/generated/**
+/generated/**
+*/generated/*
