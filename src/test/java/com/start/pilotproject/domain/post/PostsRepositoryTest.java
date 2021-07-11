@@ -10,8 +10,8 @@ import com.querydsl.core.types.Predicate;
 import com.start.pilotproject.controller.posts.dto.PostsDto.PostsResponse;
 import com.start.pilotproject.domain.posts.Post;
 import com.start.pilotproject.domain.posts.QPost;
-import com.start.pilotproject.repository.post.PostsRepository;
-import com.start.pilotproject.repository.post.PostsRepositoryCustom;
+import com.start.pilotproject.repository.post.PostRepository;
+import com.start.pilotproject.repository.post.PostRepositoryCustom;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -28,10 +28,10 @@ public class PostsRepositoryTest {
     private Integer port;
 
     @Autowired
-    PostsRepository postsRepository;
+    PostRepository postsRepository;
 
     @Autowired
-    PostsRepositoryCustom postsRepositoryCustom;
+    PostRepositoryCustom postsRepositoryCustom;
 
     @AfterEach
     public void teardown() throws Exception {

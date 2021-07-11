@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PostsRepository extends JpaRepository<Post,Long>{
+public interface PostRepository extends JpaRepository<Post,Long>{
 
     @Query("SELECT p FROM Post p ORDER by p.id DESC")
     List<Post> findAllDesc();

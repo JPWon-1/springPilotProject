@@ -1,6 +1,6 @@
 package com.start.pilotproject.controller.posts;
 
-import com.start.pilotproject.service.posts.PostsService;
+import com.start.pilotproject.service.posts.PostService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,19 +15,19 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class PostController {
     
-    private final PostsService postsService;
+    private final PostService postService;
     
     //포스트 리스트 조회
     @GetMapping
     public String getPosts(Model model){
-        model.addAttribute("list", postsService.findAllDesc());
+        model.addAttribute("list", postService.findAllDesc());
         return "posts/postIndex";
     }
 
     //포스트 조회
     @GetMapping("/{id}")
     public String getPost(Model model, @PathVariable Long id){
-        model.addAttribute("list", postsService.getOne(id));
+        model.addAttribute("list", postService.getOne(id));
         return "posts/post";
     }
 
@@ -40,7 +40,7 @@ public class PostController {
     //글쓰기 페이지(수정)
     @GetMapping("/write/{id}")
     public String patchPost(Model model, @PathVariable Long id){
-        model.addAttribute("list", postsService.getOne(id));
+        model.addAttribute("list", postService.getOne(id));
         return "posts/write";
     }
 }

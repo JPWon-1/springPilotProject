@@ -13,7 +13,7 @@ import com.start.pilotproject.controller.posts.dto.PostsDto.PostsResponse;
 import com.start.pilotproject.controller.posts.dto.PostsDto.PostsUpdateRequestDto;
 import com.start.pilotproject.domain.posts.Post;
 import com.start.pilotproject.domain.posts.QPost;
-import com.start.pilotproject.repository.post.PostsRepository;
+import com.start.pilotproject.repository.post.PostRepository;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,15 +22,15 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class PostsService {
-    private final PostsRepository postsRepository;
+public class PostService {
+    private final PostRepository postRepository;
 
     @PersistenceContext // 영속성 객체를 자동으로 삽입해줌
     private EntityManager em; 
 
     @Transactional(readOnly = true)
     public List<PostsResponse> findAllDesc(){
-        return postsRepository.findAllDesc().stream()
+        return postRepository.findAllDesc().stream()
                 .map(PostsResponse::new)
                 .collect(Collectors.toList());
     }
@@ -53,20 +53,20 @@ public class PostsService {
 
     @Transactional
     public Long save(PostsSaveRequestDto requestDto){
-        return postsRepository.save(requestDto.toEntity()).getId();
+        return postRepository.save(requestDto.toEntity()).getId();
     }
     
     @Transactional
     public void delete(Long id){
-        Post posts = postsRepository.findById(id)
+        Post posts = postRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
-        postsRepository.delete(posts);
+        postRepository.delete(posts);
     }
 
 
     @Transactional
     public Long update(Long id, PostsUpdateRequestDto requestDto){
-        Post posts = postsRepository.findById(id).orElseThrow(
+        Post posts = postRepository.findById(id).orElseThrow(
             ()->new IllegalArgumentException("해당 게시글이 없습니다"));
         posts.update(requestDto.getTitle(), requestDto.getContent());
         return id;

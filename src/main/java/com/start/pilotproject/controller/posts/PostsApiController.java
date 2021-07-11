@@ -3,7 +3,7 @@ package com.start.pilotproject.controller.posts;
 import com.start.pilotproject.controller.posts.dto.PostsSaveRequestDto;
 import com.start.pilotproject.controller.posts.dto.PostsDto.PostsResponse;
 import com.start.pilotproject.controller.posts.dto.PostsDto.PostsUpdateRequestDto;
-import com.start.pilotproject.service.posts.PostsService;
+import com.start.pilotproject.service.posts.PostService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RestController
 public class PostsApiController {
-    private final PostsService postsService;
+    private final PostService postsService;
 
     @PostMapping("/api/v1/posts")//작성
     public Long save(@RequestBody PostsSaveRequestDto requestDto){

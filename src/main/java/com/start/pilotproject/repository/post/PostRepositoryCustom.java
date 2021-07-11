@@ -7,6 +7,6 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PostsRepositoryCustom extends JpaRepository<Post,Long>,QuerydslPredicateExecutor<Post>{
+public interface PostRepositoryCustom extends JpaRepository<Post,Long>,QuerydslPredicateExecutor<Post>{
     
 }
