@@ -3,71 +3,49 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <title>JP's Portfolio</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <link rel="stylesheet" type="text/css" href="/css/common.css" />
-  <link rel="stylesheet" type="text/css" href="/css/main.css" />
+	<title>JP's Portfolio</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="/css/main.css" />
 </head>
 
 <body>
-  <div class="sidenav">
-    <a href="#about">About</a>
-    <a href="#work">Work</a>
-    <a href="#skill">Skill</a>
-    <a href="#interest">Interest</a>
-    <a href="#Links">Links</a>
-  </div>
-  <section id="profile_img_wrapper">
-    <div id="main_img">
-      <h1>오늘의&nbsp;<span class="highlight">역사</span></h1>
-    </div>
-  </section>
-  <section id="contents_wrapper">
-    <div class="main">
-      <a>&lt;&nbsp;</a><span>2021-12-31</span><a>&nbsp;&gt;</a>
-      <div class="content">
-        <table>
-          <tbody>
-            <tr class="content_row">
-              <th>
-                1027
-              </th>
-              <td>
-                <pan>
-                  [음력]혜일중광사의 창건을 명함
-                  </span>
-                  <a class="ls02" target="_blank">고려사</a>
-              </td>
-            </tr>
-            <tr class="content_row">
-              <th>
-                1041
-              </th>
-              <td>
-                <pan>
-                  [음력]7품 이상 관원 자제의 군대 충원을 금지하게 함
-                  </span>
-                  <a class="ls02" target="_blank">고려사</a>
-              </td>
-            </tr>
-            <tr class="content_row">
-              <th>
-                1058
-              </th>
-              <td>
-                <pan>
-                  [음력]충주목에서 새로 새긴 의서들을 바치니 비각에 비치하게 함
-                  </span>
-                  <a class="ls02" target="_blank">고려사</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
+	<div class="sidenav">
+		<a href="#about">About</a>
+		<a href="#work">Work</a>
+		<a href="#skill">Skill</a>
+		<a href="#interest">Interest</a>
+		<a href="#Links">Links</a>
+	</div>
+	<section id="profile_img_wrapper">
+		<div id="main_img">
+			<h1>오늘의&nbsp;<span class="highlight">역사</span></h1>
+		</div>
+	</section>
+	<section id="contents_wrapper">
+		<div class="main">
+			<a>&lt;&nbsp;</a><span>2021-12-31</span><a>&nbsp;&gt;</a>
+			<table id="content_table">
+				<tbody>
+					<tr th:each="list : ${historyList}" class="content_row">
+						<th th:text="${#temporals.format(list.date,'yyyy')}">1027</th>
+						<td>
+							<span class="content"
+								th:text="${list.content}"	
+							>
+								[음력]혜일중광사의 창건을 명함
+							</span>
+							<a class="source"
+								th:text="${list.source}"
+							>고려사</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
 
-  <script src="/js/main.js"></script>
+	<script src="/js/main.js"></script>
 </body>
 
 </html>
