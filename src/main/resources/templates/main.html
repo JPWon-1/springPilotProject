@@ -30,7 +30,8 @@
 					<tr th:each="list : ${historyList}" class="content_row">
 						<th th:text="${#temporals.format(list.date,'yyyy')}">1027</th>
 						<td>
-							<span class="content"
+							<span th:id="${list.id}"
+								class="content"
 								th:text="${list.content}"	
 							>
 								[음력]혜일중광사의 창건을 명함
@@ -42,6 +43,14 @@
 					</tr>
 				</tbody>
 			</table>
+		</div>
+		<div class="detail">
+			<ul>
+				<li id="detail_date"></li>
+				<li id="detail_content"></li>
+				<li id="detail_source"></li>
+			</ul>
+			<span>테스트중입니다.</span>
 		</div>
 	</section>
 

@@ -7,6 +7,9 @@
 body {
     background-color: black;
 }
+ul{
+    list-style-type: none;
+}
 h1,
 h2,
 h3,
@@ -18,7 +21,7 @@ tr,
 td,
 table,
 thead,
-span {
+span,li {
     color: white;
 }
 h1 {
@@ -104,17 +107,16 @@ a {
     color: #5aa9e6;
 }
 
-.main {
+#contents_wrapper .main {
     background-color: rgb(47, 52, 55);
     margin-left: 230px; /* sidenav width만큼 */
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 0px 10px;
     width: 100%;
 }
-.main .days {
-    position: relative;
-    text-align: center;
-    left: -115px;
+#contents_wrapper .detail{
+    background-color: #5aa9e6;
+    width: 30%;
 }
 @media screen and (max-height: 450px) {
     .sidenav {
