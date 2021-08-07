@@ -15,7 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
-import com.start.pilotproject.domain.comment.Comment;
 import com.start.pilotproject.util.BaseTimeEntity;
 
 import lombok.Builder;
@@ -44,9 +43,9 @@ public class Member extends BaseTimeEntity {
     @Column
     private String password;
 
-    @OneToMany
-    @JoinColumn(name = "member_id")
-    private List<Comment> comments = new ArrayList<>();
+    // @OneToMany
+    // @JoinColumn(name = "member_id")
+    // private List<Comment> comments = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     private Role role;
