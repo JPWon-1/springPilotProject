@@ -33,7 +33,7 @@ ul{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    height: 30vh;
+    height: 25vh;
 }
 #main_img h1 {
     z-index: 2;
@@ -56,7 +56,13 @@ ul{
     margin-bottom: 10px;
     padding: 10px;
 }
-
+.content{
+    color:#0095ff
+}
+.source{
+    font-size:0.8em;
+    color: orange;
+}
 
 .sidenav {
     height: 100%;
@@ -82,21 +88,11 @@ ul{
 }
 
 #contents_wrapper .main {
-    background-color: rgb(47, 52, 55);
-    margin-left: 230px; /* sidenav width만큼 */
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 0px 10px;
-    width: 100%;
 }
+
 #contents_wrapper .detail{
     background-color: #5aa9e6;
     width: 30%;
-}
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-    .sidenav a {
-        font-size: 18px;
-    }
 }

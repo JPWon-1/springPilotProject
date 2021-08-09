@@ -25,37 +25,22 @@
 	<div id="contents_wrapper" class="page-body">
 		<table class="collection-content">
 			<colgroup>
-				<col width="8%" />
 				<col width="10%" />
-				<col width="10%" />
-				<col width="13%" />
-				<col width="13%" />
-				<col width="13%" />
+				<col width="20%" />
 				<col width="13%" />
 			</colgroup>
 			<thead>
 				<tr>
-					<!-- <th><span class="icon property-icon">Question/Issue</span></th> -->
-					<!-- <th><span class="icon property-icon">작성자</span></th> -->
 					<th><span class="icon property-icon">날짜</span></th>
 					<th><span class="icon property-icon">내용</span></th>
 					<th><span class="icon property-icon">출처</span></th>
-					<!-- <th><span class="icon property-icon">최종 업데이트일시</span></th> -->
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="history : ${histories}">
-					<!-- <td class="cell-title"><a>TestCode 작성</a></td> -->
-					<!-- <td class="cell">
-						<span class="user">
-							<img src="https://lh3.googleusercontent.com/a-/AOh14GjOre_ERVQSuqJSond6YPwn4iw5PucuYdGN3xk5BQ=s100"
-								class="icon user-icon" />WON JONGPIL
-						</span>
-					</td> -->
 					<td class="cell"><time th:text="${history.historyDate}">@2021년 3월 13일 오후 1:48</time></td>
-					<td class="cell" th:text="${history.content}">내용</td>
+					<td class="cell content" th:id="${history.id}" th:text="${history.content}">내용</td>
 					<td class="cell"><span class="selected-value select-value-color-red" th:text="${history.source}">출처</span></td>
-					<!-- <td class="cell"><time>@2021년 3월 22일 오후 11:12</time></td> -->
 				</tr>
 			</tbody>
 		</table>

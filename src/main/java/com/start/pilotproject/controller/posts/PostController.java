@@ -24,12 +24,12 @@ public class PostController {
         return "posts/postIndex";
     }
 
-    //포스트 조회
-    @GetMapping("/{id}")
-    public String getPost(Model model, @PathVariable Long id){
-        model.addAttribute("list", postService.getOne(id));
-        return "posts/post";
-    }
+    // //포스트 조회
+    // @GetMapping("/{id}")
+    // public String getPost(Model model, @PathVariable Long id){
+    //     model.addAttribute("list", postService.getOne(id));
+    //     return "posts/post";
+    // }
 
     //글쓰기 페이지
     @GetMapping("/write")
@@ -37,10 +37,10 @@ public class PostController {
         return "posts/write";
     }
 
-    //글쓰기 페이지(수정)
-    @GetMapping("/write/{id}")
-    public String patchPost(Model model, @PathVariable Long id){
-        model.addAttribute("list", postService.getOne(id));
-        return "posts/write";
-    }
+    // //글쓰기 페이지(수정)
+    // @GetMapping("/write/{id}")
+    // public String patchPost(Model model, @PathVariable Long id){
+    //     model.addAttribute("list", postService.getOne(id));
+    //     return "posts/write";
+    // }
 }

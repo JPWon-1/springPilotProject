@@ -1,0 +1,38 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>JP's Portfolio</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="/css/main.css" />
+</head>
+
+<body>
+	<div class="sidenav">
+		<a href="#about">About</a>
+		<a href="#work">Work</a>
+		<a href="#skill">Skill</a>
+		<a href="#interest">Interest</a>
+		<a href="#Links">Links</a>
+	</div>
+	<section id="profile_img_wrapper">
+		<div id="main_img">
+			<h1>오늘의&nbsp;<span class="highlight">역사</span></h1>
+		</div>
+	</section>
+	<section id="contents_wrapper">
+		<div class="main">
+			<span class="date" th:text="${history?.historyDate}">2021-12-31</span>
+			<div>
+				<span class="content" th:text="${history?.content}">content</span>
+			</div>
+			<div>
+				<span class="source" th:text="${history?.source}">source</span>
+			</div>
+		</div>
+	</section>
+</body>
+
+</html>

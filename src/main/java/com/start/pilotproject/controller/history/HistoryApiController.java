@@ -4,7 +4,6 @@ import com.start.pilotproject.domain.history.History;
 import com.start.pilotproject.repository.history.HistoryRepository;
 import com.start.pilotproject.service.history.HistoryService;
 
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +19,6 @@ import lombok.RequiredArgsConstructor;
 @RestController
 public class HistoryApiController {
     private final HistoryService historyService;
-    private final HistoryRepository historyRepository;
 
     @PostMapping("/api/v1")//작성
     public Long save(){
@@ -33,7 +31,7 @@ public class HistoryApiController {
     }
 
     @GetMapping("/api/v1/{id}")//단건 조회
-    public History findById(@PathVariable Long id,Model model){
+    public History findById(@PathVariable Long id){
         return historyService.findById(id);
     }
 

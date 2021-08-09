@@ -16,7 +16,6 @@ var member = {
         $.ajax({
             type: "POST",
             url: "/signUp",
-            // dataType: "json",
             contentType: "application/json;charset=utf-8",
             data: JSON.stringify(data),
         }).done(function (response,textStatus,xhr) {

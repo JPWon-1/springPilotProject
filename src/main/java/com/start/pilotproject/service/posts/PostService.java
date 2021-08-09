@@ -6,13 +6,10 @@ import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.querydsl.core.types.Projections;
-import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.start.pilotproject.controller.posts.dto.PostsSaveRequestDto;
 import com.start.pilotproject.controller.posts.dto.PostsDto.PostsResponse;
 import com.start.pilotproject.controller.posts.dto.PostsDto.PostsUpdateRequestDto;
 import com.start.pilotproject.domain.posts.Post;
-import com.start.pilotproject.domain.posts.QPost;
 import com.start.pilotproject.repository.post.PostRepository;
 
 import org.springframework.stereotype.Service;
@@ -35,22 +32,6 @@ public class PostService {
                 .collect(Collectors.toList());
     }
     
-    @Transactional(readOnly = true)
-    public PostsResponse getOne(Long id){
-        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
-        QPost post = QPost.post; 
-        return queryFactory.from(post)
-            .select(Projections.fields(PostsResponse.class,
-                post.id,
-                post.author,
-                post.title,
-                post.content,
-                post.createdDate,
-                post.modifiedDate
-            )).where(post.id.eq(id))
-            .fetchOne();
-    }
-
     @Transactional
     public Long save(PostsSaveRequestDto requestDto){
         return postRepository.save(requestDto.toEntity()).getId();
