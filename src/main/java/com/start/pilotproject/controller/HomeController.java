@@ -15,7 +15,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model){
-        model.addAttribute("historyList",historyRepository.findAll());
+        model.addAttribute("histories",historyRepository.findAll());
         return "main";
     }
    

@@ -10,29 +10,6 @@ body {
 ul{
     list-style-type: none;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-tr,
-td,
-table,
-thead,
-span,li {
-    color: white;
-}
-h1 {
-    color: white;
-    font-size: 2rem;
-    line-height: 1.2;
-}
-a {
-    color: whitesmoke;
-    text-decoration: none;
-}
 .highlight {
     display: inline-block;
     position: relative;
@@ -67,13 +44,10 @@ a {
     top: 20vh;
 }
 #contents_wrapper {
-    display: flex;
+    display: block;
+    margin-left: 250px;
     justify-content: flex-end;
-    margin: 0;
-    background-color: black;
     height: 70vh;
-    width: 100%;
-    position: relative;
 }
 #content_table{
     background-color: #293241;
