@@ -83,7 +83,15 @@ textarea::placeholder {
     color: black;
     font-weight: bold;
 }
-
+button,
+input,
+textarea {
+    font-family: NanumGothic, sans-serif;
+}
+ol,
+ul {
+    list-style: none;
+}
 /* contents wrapper */
 .contents_wrapper {
     display: block;

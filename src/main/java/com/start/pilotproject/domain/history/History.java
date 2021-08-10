@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.start.pilotproject.domain.comment.Comment;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,9 +36,9 @@ public class History {
 
     private String source;
 
-    // @OneToMany
-    // @JoinColumn(name = "history_id")
-    // private List<Comment> comments = new ArrayList<>();
+    @OneToMany
+    @JoinColumn(name = "history_id")
+    private List<Comment> comments = new ArrayList<>();
 
     @Builder
     public History(Long id, String content, String source) {

@@ -33,18 +33,38 @@
 			</div>
 		</div>
 		<div id="comment_list">
-			<form>
+			<form id="comment_new_form">
 				<input type="hidden" name="historyId">
 				<div class="form_wrapper">
-					<dl class="comment_form_content">
+					<dl>
 						<dt>댓글 본문</dt>
 						<dd>
-							<textarea id="comment_textarea" name="content" data-login-url="" placeholder="댓글을 작성하려면 로그인하셔야 합니다."></textarea>
+							<textarea id="comment_textarea" name="content" data-login-url=""
+								placeholder="댓글을 작성하려면 로그인하셔야 합니다."></textarea>
 						</dd>
 					</dl>
+					<div class="buttons">
+						<button type="submit">
+							<span>댓글 올리기</span>
+						</button>
+					</div>
 				</div>
 			</form>
-			
+			<ol id="comment_list">
+				<li id="comment200693" data-id="200693">
+					<div class="profile_image">
+						<img class="profile_icon" src="http://placehold.it/55x55" alt="">
+					</div>
+					<div class="name time">
+						<strong>JPJPJP</strong><a href="javascript:;" name=""><time>10일 전</time></a>
+					</div>
+					<div class="comment_content">완료 </div>
+					<div class="buttons">
+						<a class="icon block reply" href="#"><span class="ico ico_reply"></span> 답글</a>
+					</div>
+				</li>
+			</ol>
+
 		</div>
 	</section>
 </body>

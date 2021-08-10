@@ -1,14 +1,33 @@
-.form_wrapper dl dt{
-    display:none;
+.form_wrapper dl dt {
+    display: none;
 }
-.comment_form_content {
-    margin-bottom: 10px;
+#comment_list {
+    width: 623px;
 }
-.comment_form_content dd {
+#comment_new_form {
+    margin-bottom: 25px;
+    border-bottom: 1px solid #ddd;
+    padding: 0 0 40px 0;
+    position: relative;
+}
+#comment_new_form dd {
     border: 1px solid #ccc;
     width: 623px;
 }
-#comment_textarea{
+#comment_new_form div.buttons button {
+    background-color: #3c9;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1em;
+    height: 29px;
+    margin: 0;
+    line-height: 29px;
+    padding: 0 25px;
+    position: absolute;
+    right: 0;
+}
+#comment_textarea {
     font-size: 12px;
     margin: 0;
     padding: 5px;
@@ -18,15 +37,49 @@
     color: #666;
     border: 0;
 }
-.detail{
+ol#comment_list {
+    line-height: 1.6em;
+}
+ol#comment_list>li{
+    position: relative;
+    padding: 18px 0;
+}
+ol#comment_list>li div.profile_image{
+    top:20;
+    position: absolute;
+    left:20px;
+}
+ol#comment_list>li div.name.time{
+    margin-left: 87px;
+    margin-bottom: 6px;
+}
+ol#comment_list>li div.name.time a time {
+    color: #999;
+    font-size: 11px;
+    margin: 2px 0 0 10px;
+    vertical-align: middle;
+}
+ol#comment_list>li div.comment_content{
+    margin-left: 87px;
+    width: 615px;
+    font-size: 1.1em;
+}
+ol#comment_list>li div.buttons{
+    position: absolute;
+    right: 25px;
+    top: 20px;
+    color: #000;
+}
+
+.detail {
     height: 50%;
 }
-.detail span{
-    font-size:12px;
+.detail span {
+    font-size: 12px;
 }
-.detail .content{
-    color:black
+.detail .content {
+    color: black;
 }
-.detail .source{
-    color:black;
+.detail .source {
+    color: black;
 }
