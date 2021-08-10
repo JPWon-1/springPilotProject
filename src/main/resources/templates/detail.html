@@ -6,7 +6,7 @@
 	<title>JP's Portfolio</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" type="text/css" href="/css/common.css" />
-	<link rel="stylesheet" type="text/css" href="/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="/css/detail.css" />
 </head>
 
 <body>
@@ -22,8 +22,8 @@
 			<h1>오늘의&nbsp;<span class="highlight">역사</span></h1>
 		</div>
 	</section>
-	<section id="contents_wrapper">
-		<div class="main">
+	<section class="contents_wrapper">
+		<div class="detail">
 			<span class="date" th:text="${history?.historyDate}">2021-12-31</span>
 			<div>
 				<span class="content" th:text="${history?.content}">content</span>
@@ -31,6 +31,20 @@
 			<div>
 				<span class="source" th:text="${history?.source}">source</span>
 			</div>
+		</div>
+		<div id="comment_list">
+			<form>
+				<input type="hidden" name="historyId">
+				<div class="form_wrapper">
+					<dl class="comment_form_content">
+						<dt>댓글 본문</dt>
+						<dd>
+							<textarea id="comment_textarea" name="content" data-login-url="" placeholder="댓글을 작성하려면 로그인하셔야 합니다."></textarea>
+						</dd>
+					</dl>
+				</div>
+			</form>
+			
 		</div>
 	</section>
 </body>

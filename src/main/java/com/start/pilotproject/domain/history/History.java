@@ -43,7 +43,7 @@ public class History {
         this.id = id;
         this.content = content;
         this.source = source;
-        // this.date = LocalDateTime.now();
+        this.historyDate = LocalDateTime.now().toString().substring(0, 10);
     }
     
 }

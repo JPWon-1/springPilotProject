@@ -1,0 +1,32 @@
+.form_wrapper dl dt{
+    display:none;
+}
+.comment_form_content {
+    margin-bottom: 10px;
+}
+.comment_form_content dd {
+    border: 1px solid #ccc;
+    width: 623px;
+}
+#comment_textarea{
+    font-size: 12px;
+    margin: 0;
+    padding: 5px;
+    height: 50px;
+    width: 613px;
+    line-height: 1.4em;
+    color: #666;
+    border: 0;
+}
+.detail{
+    height: 50%;
+}
+.detail span{
+    font-size:12px;
+}
+.detail .content{
+    color:black
+}
+.detail .source{
+    color:black;
+}
