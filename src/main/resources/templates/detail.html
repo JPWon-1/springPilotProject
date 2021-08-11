@@ -10,18 +10,8 @@
 </head>
 
 <body>
-	<div class="sidenav">
-		<a href="#about">About</a>
-		<a href="#work">Work</a>
-		<a href="#skill">Skill</a>
-		<a href="#interest">Interest</a>
-		<a href="#Links">Links</a>
-	</div>
-	<section id="profile_img_wrapper">
-		<div id="main_img">
-			<h1>오늘의&nbsp;<span class="highlight">역사</span></h1>
-		</div>
-	</section>
+	<div th:replace="fragments/fragments.html :: sideNav"></div>
+	<section th:replace="fragments/fragments.html :: mainImg"></section>
 	<section class="contents_wrapper">
 		<div class="detail">
 			<span class="date" th:text="${history?.historyDate}">2021-12-31</span>
