@@ -14,7 +14,7 @@
     border: 1px solid #ccc;
     width: 623px;
 }
-#comment_new_form div.buttons button {
+#comment_new_form div.buttons a {
     background-color: #3c9;
     border: 0;
     color: #fff;
