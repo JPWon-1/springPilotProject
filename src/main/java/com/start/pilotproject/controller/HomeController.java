@@ -43,7 +43,7 @@ public class HomeController {
     @GetMapping("/{id}")
     public String detail(Model model, @PathVariable Long id){
         History history = historyService.findById(id);
-        // history.getComments();
+        history.getComments();
         model.addAttribute("history",history);
         return "detail";
     }

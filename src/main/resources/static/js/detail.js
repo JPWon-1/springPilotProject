@@ -1,21 +1,21 @@
 var detail = {
     init: function init() {
         var _this = this;
-        const apiUrl = "/comment/api/v1";
+        const apiUrl = "/comment/api";
         const submitBtn = document.getElementById("comment_submit");
         submitBtn.onclick = () => _this.request.post(apiUrl);
 
     },
     request: {
-        post(url, payload) {
+        post(url) {
+            var payload = {content:"abcd"}
+
             return fetch(url, {
                 method: 'POST',
                 headers: { 'content-Type': 'application/json' },
                 body: JSON.stringify(payload)
-            })
-            .then(response =>
-                console.log(response)
-            )
+            }).then(response =>
+                console.log(response))
             ;
         },
         patch(url, payload) {
