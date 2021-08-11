@@ -1,7 +1,6 @@
 package com.start.pilotproject.controller.history;
 
 import com.start.pilotproject.domain.history.History;
-import com.start.pilotproject.repository.history.HistoryRepository;
 import com.start.pilotproject.service.history.HistoryService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
