@@ -9,6 +9,8 @@ import javax.persistence.SequenceGenerator;
 
 import com.start.pilotproject.util.BaseTimeEntity;
 
+import org.springframework.data.annotation.CreatedBy;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +27,7 @@ public class Comment extends BaseTimeEntity {
     @Column(name = "history_id")
     private Long historyId;
 
+    @CreatedBy
     @Column(name = "member_id")
     private Long memberId;
 
@@ -34,7 +37,6 @@ public class Comment extends BaseTimeEntity {
     @Builder
     public Comment(Long historyId, Long memberId, String content) {
         this.historyId = historyId;
-        this.memberId = memberId;
         this.content = content;
     }
 }

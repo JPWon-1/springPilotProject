@@ -18,7 +18,6 @@ public class CommentRequestDto {
     public Comment toEntity() {
         return Comment.builder()
             .historyId(historyId)
-            .memberId(memberId)
             .content(content)
             .build();
     }

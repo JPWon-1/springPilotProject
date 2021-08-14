@@ -10,8 +10,6 @@ var detail = {
         post(url) {
             var payload = {
                 historyId:document.getElementById("historyId").value,
-                // memberId:document.getElementById("memberId").value,
-                memberId:0,
                 content:document.getElementById("comment_textarea").value,
             }
 
