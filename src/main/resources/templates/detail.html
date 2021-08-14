@@ -24,7 +24,7 @@
 		</div>
 		<div id="comment_list">
 			<form id="comment_new_form">
-				<input type="hidden" name="historyId">
+				<input type="hidden" id="historyId" th:value="${history?.id}">
 				<div class="form_wrapper">
 					<dl>
 						<dt>댓글 본문</dt>

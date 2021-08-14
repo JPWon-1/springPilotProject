@@ -44,9 +44,11 @@ public class Member extends BaseTimeEntity {
     @Column
     private String password;
 
-    @OneToMany
-    @JoinColumn(name = "member_id")
-    private List<Comment> comments = new ArrayList<>();
+    // @OneToMany
+    // @JoinColumn(name = "member_id")
+    // private List<Comment> comments = new ArrayList<>();
+    // 내 생각에 부모에 아이디가 아직 없어서 
+    // 무결성 에러가 발생하는 듯? 나중에 조금 더 알아봐야 할듯.
 
     @Enumerated(EnumType.STRING)
     private Role role;

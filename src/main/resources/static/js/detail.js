@@ -8,7 +8,12 @@ var detail = {
     },
     request: {
         post(url) {
-            var payload = {content:"abcd"}
+            var payload = {
+                historyId:document.getElementById("historyId").value,
+                // memberId:document.getElementById("memberId").value,
+                memberId:0,
+                content:document.getElementById("comment_textarea").value,
+            }
 
             return fetch(url, {
                 method: 'POST',
