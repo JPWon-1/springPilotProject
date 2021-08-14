@@ -41,7 +41,7 @@
 				</div>
 			</form>
 			<ol id="comment_list">
-				<li id="comment200693" data-id="200693">
+				<li id="comment200693">
 					<div class="profile_image">
 						<img class="profile_icon" src="http://placehold.it/55x55" alt="">
 					</div>
@@ -49,6 +49,18 @@
 						<strong>JPJPJP</strong><a href="javascript:;" name=""><time>10일 전</time></a>
 					</div>
 					<div class="comment_content">완료 </div>
+					<div class="buttons">
+						<a class="icon block reply" href="#"><span class="ico ico_reply"></span> 답글</a>
+					</div>
+				</li>
+				<li th:each="comment : ${comments}">
+					<div class="profile_image">
+						<img class="profile_icon" src="http://placehold.it/55x55" alt="">
+					</div>
+					<div class="name time">
+						<strong>JPJPJP</strong><a href="javascript:;" name=""><time>10일 전</time></a>
+					</div>
+					<div class="comment_content" th:text="${comment?.content}">완료 </div>
 					<div class="buttons">
 						<a class="icon block reply" href="#"><span class="ico ico_reply"></span> 답글</a>
 					</div>
