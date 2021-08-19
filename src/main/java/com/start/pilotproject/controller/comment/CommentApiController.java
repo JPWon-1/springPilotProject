@@ -27,14 +27,6 @@ import lombok.RequiredArgsConstructor;
 @RestController
 public class CommentApiController {
     private final CommentService commentService;
-    private final CommentRepository commentRepository;
-
-    @PostMapping("/v1/comment") // 작성
-    public List<Comment> write(@RequestBody CommentRequestDto dto) {
-        commentService.save(dto.toEntity());
-        List<Comment> comment = commentRepository.findByHistoryId(dto.getHistoryId());
-        return comment;
-    }
 
     @PatchMapping("/v1/comment/{id}") // 수정
     public ResponseEntity<ResponseMessage> update(CommentRequestDto dto) {
