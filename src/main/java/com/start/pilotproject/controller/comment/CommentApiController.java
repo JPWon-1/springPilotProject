@@ -1,10 +1,6 @@
 package com.start.pilotproject.controller.comment;
 
-import java.util.List;
-
 import com.start.pilotproject.controller.comment.dto.CommentRequestDto;
-import com.start.pilotproject.domain.comment.Comment;
-import com.start.pilotproject.repository.comment.CommentRepository;
 import com.start.pilotproject.service.comment.CommentService;
 import com.start.pilotproject.util.ResponseMessage;
 import com.start.pilotproject.util.StatusEnum;
@@ -15,8 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
