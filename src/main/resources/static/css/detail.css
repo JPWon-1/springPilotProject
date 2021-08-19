@@ -1,7 +1,7 @@
 .form_wrapper dl dt {
     display: none;
 }
-#comment_list {
+div#comment_list_wrapper {
     width: 623px;
 }
 #comment_new_form {

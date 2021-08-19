@@ -1,6 +1,10 @@
 package com.start.pilotproject.controller.comment;
 
+import java.util.List;
+
 import com.start.pilotproject.controller.comment.dto.CommentRequestDto;
+import com.start.pilotproject.domain.comment.Comment;
+import com.start.pilotproject.repository.comment.CommentRepository;
 import com.start.pilotproject.service.comment.CommentService;
 import com.start.pilotproject.util.ResponseMessage;
 import com.start.pilotproject.util.StatusEnum;
@@ -23,16 +27,13 @@ import lombok.RequiredArgsConstructor;
 @RestController
 public class CommentApiController {
     private final CommentService commentService;
+    private final CommentRepository commentRepository;
 
     @PostMapping("/v1/comment") // 작성
-    public String write(@RequestBody CommentRequestDto dto) {
+    public List<Comment> write(@RequestBody CommentRequestDto dto) {
         commentService.save(dto.toEntity());
-        ResponseMessage message = new ResponseMessage();
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("comment_id", String.valueOf(dto.getId()));
-        message.setStatus(StatusEnum.OK);
-        message.setMessage("성공");
-        return "detail :: #comment_list";
+        List<Comment> comment = commentRepository.findByHistoryId(dto.getHistoryId());
+        return comment;
     }
 
     @PatchMapping("/v1/comment/{id}") // 수정

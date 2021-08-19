@@ -12,7 +12,7 @@ public class CommentService {
 
     @Autowired
     CommentRepository commentRepository;
-
+    
     @Transactional
     public void save(Comment comment) {
         commentRepository.save(comment);
