@@ -19,23 +19,23 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@RequestMapping("/comment")
+@RequestMapping("/comment/api")
 @RestController
 public class CommentApiController {
     private final CommentService commentService;
 
-    @PostMapping("/api") // 작성
-    public ResponseEntity<ResponseMessage> write(@RequestBody CommentRequestDto dto) {
+    @PostMapping("/v1/comment") // 작성
+    public String write(@RequestBody CommentRequestDto dto) {
         commentService.save(dto.toEntity());
         ResponseMessage message = new ResponseMessage();
         HttpHeaders headers = new HttpHeaders();
         headers.add("comment_id", String.valueOf(dto.getId()));
         message.setStatus(StatusEnum.OK);
         message.setMessage("성공");
-        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+        return "detail :: #comment_list";
     }
 
-    @PatchMapping("/api/{id}") // 수정
+    @PatchMapping("/v1/comment/{id}") // 수정
     public ResponseEntity<ResponseMessage> update(CommentRequestDto dto) {
         commentService.update(dto.toEntity());
         ResponseMessage message = new ResponseMessage();
@@ -46,7 +46,7 @@ public class CommentApiController {
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
 
-    @DeleteMapping("/api/{id}") // 삭제
+    @DeleteMapping("/v1/comment/{id}") // 삭제
     public void delete(@PathVariable Long id) {
         commentService.deleteById(id);
     }
