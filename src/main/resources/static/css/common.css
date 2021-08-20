@@ -148,6 +148,7 @@ ul {
     justify-content: flex-start;
     align-items: center;
     height: 25vh;
+    cursor:pointer;
 }
 #main_img h1 {
     z-index: 2;
