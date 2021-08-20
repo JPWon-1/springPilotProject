@@ -1,70 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <meta charset="utf-8" />
-  <title>
-    Spring Init Project v1
-  </title>
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-  <!-- CSS Files -->
-  <link href="/css/material-dashboard.css" rel="stylesheet" />
+  <title>JP's Portfolio</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="/css/common.css" />
+  <link rel="stylesheet" type="text/css" href="/css/post.css" />
 </head>
 
-<body class="dark-edition">
-  <div class="wrapper ">
-    <th:block th:replace="./fragments/fragments::sidebar"></th:block>
-    <div class="main-panel">
-      <th:block th:replace="./fragments/fragments::navbar"></th:block>
-      <div class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title ">Simple Table</h4>
-                  <a href="javascript:;" role="button" class="btn btn-primary" id="btn-write">글쓰기</a>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table">
-                      <thead class=" text-primary">
-                        <th>번호</th>
-                        <th>작성자</th>
-                        <th>제목</th>
-                        <th>작성일</th>
-                      </thead>
-                      <tbody>
-                        <th:block th:each="list : ${list}">
-                        <tr>
-                          <td class="postId" th:text="${list?.id}">1</td>
-                          <td th:text="${list?.author}">Dakota Rice</td>
-                          <td>
-                            <a th:href="|/posts/${list?.id}|" th:text="${list?.title}"></a>
-                          </td>
-                          <td th:text="${#temporals.format(list?.createdDate, 'yyyy-MM-dd HH:mm')}">2021-12-31</td>
-                        </tr>
-                        </th:block>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+<body>
+  <div th:replace="fragments/fragments.html :: sideNav"></div>
+  <section th:replace="fragments/fragments.html :: mainImg"></section>
+  <section class="contents_wrapper">
+    <h1>게시글 목록</h1>
+    <section class="post_list">
+      <table border="1">
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>조회수</th>
+            <th>작성일</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>내용1</td>
+            <td>내용2</td>
+            <td>내용3</td>
+            <td>내용3</td>
+            <td>내용4</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="post_bottom">
+        <a href="/posts/write" id="post_submit">
+          <span>글쓰기</span>
+        </a>
       </div>
-    </div>
-  </div>
-  <!--   Core JS Files   -->
-  <script src="/js/core/jquery.min.js"></script>
-  <script src="/js/core/popper.min.js"></script>
-  <script src="/js/core/bootstrap-material-design.min.js"></script>
-  <!-- post js -->
-  <script src="/js/view/post.js"></script>
+    </section>
+  </section>
+  <script src="/js/post.js"></script>
+  <script src="/js/common.js"></script>
 </body>
 
 </html>

@@ -1,12 +1,12 @@
 var member = {
     init: function () {
         var _this = this;
-        $("#signUp").on("click", function () {
+        document.getElementById("signUp").onclick = function(){
             _this.save();
-        });
-        $("#loginBtn").on("click", function () {
+        };
+        document.getElementById("loginBtn").onclick = function(){
             _this.login();
-        });
+        };
     },
     save: function () {
         var data = {

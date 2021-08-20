@@ -1,56 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <meta charset="utf-8" />
-  <title>
-    Spring Init Project v1
-  </title>
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-  <!-- CSS Files -->
-  <link href="/css/material-dashboard.css" rel="stylesheet" />
+  <title>JP's Portfolio</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="/css/common.css" />
+  <link rel="stylesheet" type="text/css" href="/css/post.css" />
 </head>
 
-<body class="dark-edition">
-  <div class="wrapper ">
-    <th:block th:replace="./fragments/fragments::sidebar"></th:block>
-    <div class="main-panel">
-      <th:block th:replace="./fragments/fragments::navbar"></th:block>
-      <div class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-8 ml-auto mr-auto">
-              <div class="card">
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title">Post 등록</h4>
-                  <input type="hidden" id="id" th:value="${list?.id}">
-                  <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요" th:value="${list?.title}">
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive table-upgrade">
-                      <textarea class="form-control" rows="10" id="content" placeholder="내용을 입력하세요" th:text="${list?.content}"></textarea>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <a class="btn btn-primary" id="btn-save"  th:if="${list?.id eq null}" role="button">등록</a>
-                <a class="btn btn-primary" id="btn-update" th:if="${list?.id ne null}" role="button">수정</a>
-                <a class="btn btn-primary" role="button" href="/posts">취소</a>
-              </div>
-            </div>
+<body>
+  <div class="wrapper">
+    <div th:replace="fragments/fragments.html :: sideNav"></div>
+    <section th:replace="fragments/fragments.html :: mainImg"></section>
+    <section class="contents_wrapper">
+      <div class="post">
+        <div class="post_header">
+          <input type="hidden" id="id" th:value="${list?.id}">
+          <input type="text" id="title" placeholder="제목을 입력하세요" th:value="${list?.title}">
+        </div>
+        <div class="post_body">
+          <div>
+            <textarea rows="10" id="content" placeholder="내용을 입력하세요"
+              th:text="${list?.content}"></textarea>
           </div>
         </div>
       </div>
-    </div>
+      <div>
+        <a id="btn_save"     role="button">등록</a>
+        <a id="btn_update"   role="button">수정</a>
+        <a id="btn_delete"   role="button">삭제</a>
+        <a role="button" href="/posts">취소</a>
+      </div>
+    </section>
   </div>
-  <script src="/js/core/jquery.min.js"></script>
-  <script src="/js/core/popper.min.js"></script>
-  <script src="/js/core/bootstrap-material-design.min.js"></script>
-  <!--   Core JS Files   -->
-  <script src="/js/view/post.js"></script>
+  <script src="/js/post.js"></script>
+  <script src="/js/common.js"></script>
 </body>
 
 </html>
