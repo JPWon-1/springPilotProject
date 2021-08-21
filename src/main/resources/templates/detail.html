@@ -49,21 +49,32 @@
 						<strong>JPJPJP</strong><a href="javascript:;" name=""><time>10일 전</time></a>
 					</div>
 					<div class="comment_content">완료 </div>
-					<div class="buttons">
-						<a class="icon block reply" href="#"><span class="ico ico_reply"></span> 답글</a>
-					</div>
+					<ul class="buttons">
+						<li>
+							<a class=""><span class="reply">답글</span></a>
+						</li>
+						<li>
+							<a class=""><span class="delete">삭제</span></a>
+						</li>
+					</ul>
 				</li>
-				<li th:each="comment : ${comments}">
+				<li class="commentList" th:each="comment : ${comments}">
+					<input type="hidden" class="commentId" th:val=${comment.Id}>
 					<div class="profile_image">
 						<img class="profile_icon" src="http://placehold.it/55x55" alt="">
 					</div>
 					<div class="name time">
-						<strong>JPJPJP</strong><a href="javascript:;" name=""><time>10일 전</time></a>
+						<strong th:text="${comment.memberId==null?'JPJPJP':comment.memberId}">JPJPJP</strong><a href="javascript:;" name=""><time th:text="${comment.createdDate}">10일 전</time></a>
 					</div>
 					<div class="comment_content" th:text="${comment?.content}">완료 </div>
-					<div class="buttons">
-						<a class="icon block reply" href="#"><span class="ico ico_reply"></span> 답글</a>
-					</div>
+					<ul class="buttons">
+						<li>
+							<a class="comment_reply"><span class="reply">답글</span></a>
+						</li>
+						<li>
+							<span class="comment_delete" th:data-commentId=${comment.id}>삭제</span>
+						</li>
+					</ul>
 				</li>
 			</ol>
 

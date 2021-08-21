@@ -64,7 +64,7 @@ ol#comment_list>li div.comment_content{
     width: 615px;
     font-size: 1.1em;
 }
-ol#comment_list>li div.buttons{
+ol#comment_list>li ul.buttons{
     position: absolute;
     right: 25px;
     top: 20px;

@@ -27,5 +27,9 @@ public class CommentService {
     public void deleteById(Long id) {
         commentRepository.deleteById(id);
     }
+
+    public void deleteByHistoryIdAndId(Long historyId, Long id) {
+        commentRepository.deleteByHistoryIdAndId(historyId,id);
+    }
     
 }

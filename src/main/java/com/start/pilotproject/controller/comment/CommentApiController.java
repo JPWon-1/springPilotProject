@@ -33,9 +33,9 @@ public class CommentApiController {
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
 
-    @DeleteMapping("/v1/comment/{id}") // 삭제
-    public void delete(@PathVariable Long id) {
-        commentService.deleteById(id);
+    @DeleteMapping("/{historyId}/{id}") // 삭제
+    public void delete(@PathVariable Long historyId,@PathVariable Long id) {
+        commentService.deleteByHistoryIdAndId(historyId,id);
     }
 
 }
