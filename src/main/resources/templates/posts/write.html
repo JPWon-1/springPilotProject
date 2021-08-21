@@ -15,22 +15,42 @@
     <section th:replace="fragments/fragments.html :: mainImg"></section>
     <section class="contents_wrapper">
       <div class="post">
+        <ul class="question_kind">
+          <li>
+            <button>질문</button>
+          </li>
+          <li>
+            <button>수정요청</button>
+          </li>
+          <li>
+            <button>추가요청</button>
+          </li>
+        </ul>
         <div class="post_header">
           <input type="hidden" id="id" th:value="${list?.id}">
           <input type="text" id="title" placeholder="제목을 입력하세요" th:value="${list?.title}">
         </div>
         <div class="post_body">
           <div>
-            <textarea rows="10" id="content" placeholder="내용을 입력하세요"
-              th:text="${list?.content}"></textarea>
+            <textarea rows="10" id="content" placeholder="내용을 입력하세요" th:text="${list?.content}"></textarea>
           </div>
         </div>
       </div>
-      <div>
-        <a id="btn_save"     role="button">등록</a>
-        <a id="btn_update"   role="button">수정</a>
-        <a id="btn_delete"   role="button">삭제</a>
-        <a role="button" href="/posts">취소</a>
+      <div class="post_bottom">
+        <ul>
+          <li>
+            <button id="btn_save">등록</button>
+          </li>
+          <li>
+            <button id="btn_update">수정</button>
+          </li>
+          <li>
+            <button id="btn_delete">삭제</button>
+          </li>
+          <li>
+            <button id="btn_cancel">취소</button>
+          </li>
+        </ul>
       </div>
     </section>
   </div>

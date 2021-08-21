@@ -1,19 +1,76 @@
+/* 게시판 첫 화면 */
 section.post_list{
     position:relative
+}
+/* 게시글 작성 */
+ul.question_kind{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+}
+ul.question_kind li{
+    margin-right: 12px;
+}
+ul.question_kind li button{
+    width: 90px;
+    border-color: #00c471;
+    background-color: #00c471;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+div.post_header{
+    width: 623px;
+    border: 1px solid #3c9;
+    border-radius: 4px;
+    background-color: #fff;
+}
+div.post_header #title{
+    width: 100%;
+    padding: 0px;
+    line-height: 1.47;
+    letter-spacing: -.3px;
+    font-size: 15px;
+    border: 0;
+    background: none;
+    margin: 10px;
+}
+div.post_body{
+    width: 623px;
+    border: 1px solid #3c9;
+    border-radius: 4px;
+    background-color: #fff;
+    margin-top: 10px;
+}
+div.post_body #content{
+    width: 100%;
+    padding: 0px;
+    line-height: 1.47;
+    letter-spacing: -.3px;
+    font-size: 15px;
+    border: 0;
+    background: none;
+    padding: 10px;
 }
 div.post_bottom{
     height: 50px;
     position: relative;
 }
-div.post_bottom a {
-    position: absolute;
-    background-color: #3c9;
-    color: #fff;
-    cursor: pointer;
-    font-size: 1em;
-    border: 0;
-    height: 29px;
-    line-height: 29px;
-    padding: 0 25px;
-    top: 10px;
+div.post_bottom ul{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+div.post_bottom ul>li{
+    margin-right: 12px;
+}
+div.post_bottom li button{
+    width: 45px;
+    border-color: #00c471;
+    background-color: #00c471;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
 }
