@@ -72,7 +72,7 @@
 							<a class="comment_reply"><span class="reply">답글</span></a>
 						</li>
 						<li>
-							<span class="comment_delete" th:data-commentId=${comment.id}>삭제</span>
+							<span class="comment_delete" th:data-commentId=${comment.id} onclick="detail.request.delete(this)">삭제</span>
 						</li>
 					</ul>
 				</li>

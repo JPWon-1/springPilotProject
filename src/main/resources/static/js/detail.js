@@ -1,24 +1,17 @@
 var detail = {
     init: function init() {
         var _this = this;
-        const postUrl = "/comment";
-        const deleteUrl = "/comment/api";
         const submitBtn = document.getElementById("comment_submit");
-        const deleteBtn = document.getElementsByClassName("comment_delete");
-        for(let btn of deleteBtn){
-            btn.addEventListener('click',function(e){
-                _this.request.delete(e,deleteUrl);
-            })
-        }
-        submitBtn.onclick = () => _this.request.post(postUrl);
+        submitBtn.onclick = () => _this.request.post();
     },
     request: {
-        post(url) {
+        post() {
+            const postUrl = "/comment";
             const payload = {
                 historyId: document.getElementById("historyId").value,
                 content: document.getElementById("comment_textarea").value,
             }
-            return fetch(url, {
+            return fetch(postUrl, {
                 method: 'POST',
                 headers: { 'content-Type': 'application/json' },
                 body: JSON.stringify(payload)
@@ -35,12 +28,13 @@ var detail = {
                 body: JSON.stringify(payload)
             });
         },
-        delete(e,url) {
-            const el = e.target;
+        delete(target) {
+            const deleteUrl = "/comment/api";
+            const el = target;
             const historyId = document.getElementById("historyId").value;
             const commentId = el.dataset.commentid
 
-            return fetch(`${url}/${historyId}/${commentId}`, {
+            return fetch(`${deleteUrl}/${historyId}/${commentId}`, {
                 method: 'DELETE',
             }).then(function(){
                 el.closest('ul').parentNode.remove()
