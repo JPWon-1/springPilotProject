@@ -1,9 +1,9 @@
 var member = {
     init: function () {
         var _this = this;
-        // document.getElementById("signUp").onclick = function(){
-        //     _this.save();
-        // };
+        document.getElementById("signUp").onclick = function(){
+            _this.save();
+        };
         document.getElementById("loginBtn").onclick = function(){
             _this.login();
         };
@@ -26,28 +26,22 @@ var member = {
             alert(response.responseJSON.message);
         });
     },
+    
     login: function (){
-        var data = {
-            email: $("#email").val(),
-            password: $("#password").val(),
+        const payload = {
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value,
         };
-        $.ajax({
-            type: "POST",
-            url: "/login",
-            // dataType: "json",
-            contentType: "application/json;charset=utf-8",
-            data: JSON.stringify(data),
-        }).done(function (response,textStatus,xhr) {
-            console.log(response);
-            console.log(textStatus);
-            alert("로그인 되었습니다.")
-
-            localStorage.setItem('token',response.Authorization);
-
-
-        }).fail(function (response) {
-            alert(response.responseJSON.message);
-        });
+        const url = "/login";
+        return fetch(url, {
+            method: 'POST',
+            headers: { 'content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        }).then(response => {
+            return response.json();
+        }).then(data => {
+            console.log(data)
+        })
     }
 };
 member.init();

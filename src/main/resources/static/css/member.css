@@ -15,7 +15,7 @@ div.panel-body input{
     height: 30px;
     padding: 10px;
 }
-div.panel-body #loginBtn{
+div.panel-body #loginBtn,#signUp{
     display: block;
     margin-top: 10px;
     border: 1px solid #ddd;
@@ -24,7 +24,7 @@ div.panel-body #loginBtn{
     color: #fff;
     line-height: 29px;
 }
-div.login-form-wrapper{
+div.form-wrapper{
     margin-bottom: 20px;
     background-color: #fff;
     border: 1px solid transparent;

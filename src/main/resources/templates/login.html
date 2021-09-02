@@ -13,10 +13,11 @@
 
 <body>
     <div th:replace="fragments/fragments.html :: sideNav"></div>
+    <section th:replace="fragments/fragments.html :: mainImg"></section>
     <section class="contents_wrapper">
         <div>
             <h1>로그인</h1>
-            <div class="login-form-wrapper">
+            <div class="form-wrapper">
                 <div class="panel-heading">
                     <h5 class="panel-header">아이디 로그인</h5>
                 </div>
@@ -45,7 +46,7 @@
             </div>
         </div>
     </section>
-    <script src="/js/member.js"></script>
+    <script src="/js/member/login.js"></script>
 </body>
 
 </html>
