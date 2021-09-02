@@ -4,50 +4,48 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>
-        Spring Init Project v1
-    </title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <title>오늘의 역사</title>
+    <link rel="stylesheet" type="text/css" href="/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/css/member.css" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+        name='viewport' />
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                <div class="card card-signin my-5">
-                    <div class="card-body">
-                        <div th:if="${param.error}">
-                            Invalid ID and password.
-                        </div>
-                        <div th:if="${param.logout}">
-                            You have been logged out.
-                        </div>
-                        <h5 class="card-title text-center">Sign In</h5>
-                            <div class="form-label-group">
-                                <input type="text" name="email" id="email" class="form-control" 
-                                       placeholder="Email address" required autofocus>
-                                <label for="inputEmail">Email address</label>
-                            </div>
-                            <div class="form-label-group">
-                                <input type="password" name="password" id="password" class="form-control" 
-                                    placeholder="Password" required>
-                                <label for="inputPassword">Password</label>
-                            </div>
-                            <button id="loginBtn" class="btn btn-lg btn-primary btn-block text-uppercase">
-                                Sign in
-                            </button>
-                            <a href="/join">회원이 아니세요?</a>
-                            <hr class="my-4">
-                            <a href="/oauth2/authorization/google" class="btn btn-lg btn-google btn-block text-uppercase" type="submit">
-                                <i class="fab fa-google mr-2"></i> Sign in with Google</a>
-                            <a href="/oauth2/authorization/naver" class="btn btn-lg btn-google btn-block text-uppercase" type="submit">
-                                <i class="fab fa-naver mr-2"></i> Sign in with 네이버</a>
+    <div th:replace="fragments/fragments.html :: sideNav"></div>
+    <section class="contents_wrapper">
+        <div>
+            <h1>로그인</h1>
+            <div class="login-form-wrapper">
+                <div class="panel-heading">
+                    <h5 class="panel-header">아이디 로그인</h5>
+                </div>
+                <div th:if="${param.error}">
+                    Invalid ID and password.
+                </div>
+                <div th:if="${param.logout}">
+                    You have been logged out.
+                </div>
+                <div class="panel-body">
+                    <div>
+                        <input type="text" name="email" id="email" class="form-control" placeholder="Email address" required
+                            autofocus>
                     </div>
+                    <div>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Password"
+                            required>
+                    </div>
+                    <a id="loginBtn">Sign in</a><br>
+                </div>
+                <div class="buttons">
+                    <a href="/join">회원이 아니세요?</a><br>
+                    <a href="/oauth2/authorization/google" type="submit">Sign in with Google</a><br>
+                    <a href="/oauth2/authorization/naver" type="submit">Sign in with 네이버</a>
                 </div>
             </div>
         </div>
-    </div>
-    <script src="/js/view/member.js"></script>
+    </section>
+    <script src="/js/member.js"></script>
 </body>
 
 </html>
