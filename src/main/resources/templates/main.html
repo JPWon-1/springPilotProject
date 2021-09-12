@@ -12,29 +12,32 @@
 <body>
 	<div th:replace="fragments/fragments.html :: sideNav"></div>
 	<section th:replace="fragments/fragments.html :: mainImg"></section>
-	<div class="contents_wrapper">
-		<table class="collection-content">
-			<colgroup>
-				<col width="10%" />
-				<col width="20%" />
-				<col width="13%" />
-			</colgroup>
-			<thead>
-				<tr>
-					<th><span class="icon property-icon">날짜</span></th>
-					<th><span class="icon property-icon">내용</span></th>
-					<th><span class="icon property-icon">출처</span></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="history : ${histories}">
-					<td class="cell"><time th:text="${history.historyDate}">@2021년 3월 13일 오후 1:48</time></td>
-					<td class="cell content" th:id="${history.id}" th:text="${history.content}">내용</td>
-					<td class="cell"><span class="selected-value select-value-color-red" th:text="${history.source}">출처</span></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+	<section class="contents_wrapper">
+		<div>
+			<table class="collection-content">
+				<colgroup>
+					<col width="10%" />
+					<col width="20%" />
+					<col width="13%" />
+				</colgroup>
+				<thead>
+					<tr>
+						<th><span class="icon property-icon">날짜</span></th>
+						<th><span class="icon property-icon">내용</span></th>
+						<th><span class="icon property-icon">출처</span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="history : ${histories}">
+						<td class="cell"><time th:text="${history.historyDate}">@2021년 3월 13일 오후 1:48</time></td>
+						<td class="cell content" th:id="${history.id}" th:text="${history.content}">내용</td>
+						<td class="cell"><span class="selected-value select-value-color-red"
+								th:text="${history.source}">출처</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
 
 	<script src="/js/main.js"></script>
 	<script src="/js/common.js"></script>

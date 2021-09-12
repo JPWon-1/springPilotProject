@@ -18,6 +18,7 @@ var login = {
         }).then(response => {
             return response.json();
         }).then(data => {
+            localStorage.setItem("token",data.Authorization)
             console.log(data)
         })
     }

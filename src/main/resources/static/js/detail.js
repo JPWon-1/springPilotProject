@@ -1,5 +1,7 @@
 var detail = {
     init: function init() {
+        var jwt = localStorage.getItem('token');
+        console.log(jwt,jwt.toString())
         var _this = this;
         const submitBtn = document.getElementById("comment_submit");
         submitBtn.onclick = () => _this.request.post();
@@ -13,7 +15,9 @@ var detail = {
             }
             return fetch(postUrl, {
                 method: 'POST',
-                headers: { 'content-Type': 'application/json' },
+                headers: { 'content-Type': 'application/json',
+                    Authorization: localStorage.getItem("token")
+                },
                 body: JSON.stringify(payload)
             }).then(response => {
                 return response.text();

@@ -93,14 +93,14 @@ ul {
     list-style: none;
 }
 /* contents wrapper */
-.contents_wrapper {
+section.contents_wrapper {
     display: block;
     margin-left: 250px;
     justify-content: flex-end;
     height: 70vh;
 }
 /* side fragments */
-.sidenav {
+div.sidenav {
     height: 100%;
     width: 230px;
     position: fixed;
@@ -112,24 +112,24 @@ ul {
     padding-top: 20px;
 }
 
-.sidenav a {
+div.sidenav a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 25px;
     color: #293241;
     display: block;
 }
-.sidenav a:hover {
+div.sidenav a:hover {
     color: #5aa9e6;
 }
 
 /* top fragments */
-.highlight {
+span.highlight {
     display: inline-block;
     position: relative;
     z-index: 2;
 }
-.highlight::before {
+span.highlight::before {
     background-image: linear-gradient(50deg, transparent 10%, #fcdc65 10%, #fcdc65 90%, transparent 90%);
     width: 120%;
     height: 8%;
@@ -139,7 +139,12 @@ ul {
     left: -10%;
     z-index: 1;
 }
-#main_img {
+div.member_menu{
+    float: right;
+    color: black;
+    margin: 10px 10px 0px 0px;
+}
+div#main_img {
     background-image: url(/img/무궁화.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -150,7 +155,7 @@ ul {
     height: 25vh;
     cursor:pointer;
 }
-#main_img h1 {
+div#main_img h1 {
     z-index: 2;
     position: absolute;
     color: wheat;
