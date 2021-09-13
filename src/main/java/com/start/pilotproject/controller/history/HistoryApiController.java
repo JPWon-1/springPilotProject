@@ -1,6 +1,7 @@
 package com.start.pilotproject.controller.history;
 
 import com.start.pilotproject.domain.history.History;
+import com.start.pilotproject.service.history.FirebaseService;
 import com.start.pilotproject.service.history.HistoryService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,6 +19,13 @@ import lombok.RequiredArgsConstructor;
 @RestController
 public class HistoryApiController {
     private final HistoryService historyService;
+    private final FirebaseService firebaseService;
+
+    @GetMapping("/test")
+    public void test(){
+        firebaseService.getAll();
+    }
+
 
     @PostMapping("/api/v1")//작성
     public Long save(){

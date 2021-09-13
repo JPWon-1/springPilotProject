@@ -32,6 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                                    "/scss/**",
                                    "/img/**",
                                    "/js/**",
+                                   "/favicon.ico",
+                                   "favicon.ico",
                                    "/h2-console/**");	
     }   
 

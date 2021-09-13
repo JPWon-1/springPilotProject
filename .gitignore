@@ -39,3 +39,7 @@ src/main/generated
 **/generated/**
 /generated/**
 */generated/*
+src/main/resources/firebaseAccessKey.json
+src/main/java/com/start/pilotproject/config/FirebaseConfig.java
+src/main/java/com/start/pilotproject/config/SecurityConfig.java
+.gitignore
