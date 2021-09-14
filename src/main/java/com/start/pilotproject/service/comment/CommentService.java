@@ -1,6 +1,6 @@
 package com.start.pilotproject.service.comment;
 
-import com.start.pilotproject.domain.comment.Comment;
+import com.start.pilotproject.domain.comment.Comments;
 import com.start.pilotproject.repository.comment.CommentRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +14,12 @@ public class CommentService {
     CommentRepository commentRepository;
     
     @Transactional
-    public void save(Comment comment) {
+    public void save(Comments comment) {
         commentRepository.save(comment);
     }
     
     @Transactional
-    public void update(Comment comment) {
+    public void update(Comments comment) {
         commentRepository.save(comment);
     }
     

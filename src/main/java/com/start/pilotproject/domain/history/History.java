@@ -1,5 +1,6 @@
 package com.start.pilotproject.domain.history;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
-import com.start.pilotproject.domain.comment.Comment;
+import com.start.pilotproject.domain.comment.Comments;
 import com.start.pilotproject.util.BaseTimeEntity;
 
 import lombok.Builder;
@@ -29,6 +30,7 @@ public class History extends BaseTimeEntity{
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="history_seq")
     private Long id;
 
+    // private LocalDate historyDate;
     private String historyDate;
 
     private String content;
@@ -37,14 +39,14 @@ public class History extends BaseTimeEntity{
 
     @OneToMany
     @JoinColumn(name = "history_id")
-    private List<Comment> comments = new ArrayList<>();
+    private List<Comments> comments = new ArrayList<>();
 
     @Builder
     public History(Long id, String content, String source) {
         this.id = id;
         this.content = content;
         this.source = source;
-        this.historyDate = LocalDateTime.now().toString().substring(0, 10);
+        this.historyDate = LocalDate.now().toString();
     }
     
 }

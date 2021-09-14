@@ -15,7 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
-import com.start.pilotproject.domain.comment.Comment;
+import com.start.pilotproject.domain.comment.Comments;
 import com.start.pilotproject.util.BaseTimeEntity;
 
 import lombok.Builder;

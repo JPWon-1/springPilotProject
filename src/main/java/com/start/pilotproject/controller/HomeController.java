@@ -2,7 +2,7 @@ package com.start.pilotproject.controller;
 
 import java.util.List;
 
-import com.start.pilotproject.domain.comment.Comment;
+import com.start.pilotproject.domain.comment.Comments;
 import com.start.pilotproject.domain.history.History;
 import com.start.pilotproject.repository.history.HistoryRepository;
 import com.start.pilotproject.service.history.HistoryService;
@@ -46,7 +46,7 @@ public class HomeController {
     @GetMapping("/{id}")
     public String detail(Model model, @PathVariable Long id){
         History history = historyService.findById(id);
-        List<Comment> comments = history.getComments();
+        List<Comments> comments = history.getComments();
         model.addAttribute("history",history);
         model.addAttribute("comments",comments);
         return "detail";

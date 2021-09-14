@@ -1,6 +1,6 @@
 package com.start.pilotproject.controller.comment.dto;
 
-import com.start.pilotproject.domain.comment.Comment;
+import com.start.pilotproject.domain.comment.Comments;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,8 +15,8 @@ public class CommentRequestDto {
     private Long memberId;
     private String content;
 
-    public Comment toEntity() {
-        return Comment.builder()
+    public Comments toEntity() {
+        return Comments.builder()
             .historyId(historyId)
             .content(content)
             .build();

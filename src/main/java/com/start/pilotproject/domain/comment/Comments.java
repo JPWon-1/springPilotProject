@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Comment extends BaseTimeEntity {
+public class Comments extends BaseTimeEntity {
     @Id
     @SequenceGenerator(name = "comment_seq", sequenceName = "comment_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "comment_seq")
@@ -35,7 +35,7 @@ public class Comment extends BaseTimeEntity {
     private String content;
 
     @Builder
-    public Comment(Long historyId, Long memberId, String content) {
+    public Comments(Long historyId, Long memberId, String content) {
         this.historyId = historyId;
         this.content = content;
     }

@@ -12,10 +12,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PostRepository extends JpaRepository<Post,Long>{
 
-    @Query("SELECT p FROM Post p ORDER by p.id DESC")
+    @Query("Select p From Post p order by p.id desc")
     List<Post> findAllDesc();
 
-    @Query("SELECT p FROM Post p where p.title = ?1")
+    @Query("Select p From Post p where p.title = ?1")
     Post findByTitle(String title);
     
 }

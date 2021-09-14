@@ -61,6 +61,8 @@ dependencies {
     implementation("com.h2database:h2")
     testImplementation("com.h2database:h2")
 
+    //log
+    implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.8'
     //security
     implementation 'org.springframework.boot:spring-boot-starter-security'
     testImplementation 'org.springframework.security:spring-security-test'

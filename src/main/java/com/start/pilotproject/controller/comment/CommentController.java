@@ -3,7 +3,7 @@ package com.start.pilotproject.controller.comment;
 import java.util.List;
 
 import com.start.pilotproject.controller.comment.dto.CommentRequestDto;
-import com.start.pilotproject.domain.comment.Comment;
+import com.start.pilotproject.domain.comment.Comments;
 import com.start.pilotproject.repository.comment.CommentRepository;
 import com.start.pilotproject.service.comment.CommentService;
 
@@ -26,7 +26,7 @@ public class CommentController {
     @PostMapping // 작성
     public String write(@RequestBody CommentRequestDto dto, Model model) {
         commentService.save(dto.toEntity());
-        List<Comment> comments = commentRepository.findByHistoryId(dto.getHistoryId());
+        List<Comments> comments = commentRepository.findByHistoryId(dto.getHistoryId());
         model.addAttribute("comments",comments);
         return "detail :: #comment_list";
     }
