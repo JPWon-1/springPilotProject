@@ -1,12 +1,11 @@
 var detail = {
     init: function init() {
-        var jwt = localStorage.getItem('token');
-        console.log(jwt,jwt.toString())
         var _this = this;
         const submitBtn = document.getElementById("comment_submit");
         submitBtn.onclick = () => _this.request.post();
     },
     request: {
+        jwt : localStorage.getItem('token'),
         post() {
             const postUrl = "/comment";
             const payload = {
@@ -15,14 +14,22 @@ var detail = {
             }
             return fetch(postUrl, {
                 method: 'POST',
-                headers: { 'content-Type': 'application/json',
-                    Authorization: localStorage.getItem("token")
+                headers: {
+                    'content-Type': 'application/json',
+                    Authorization: this.jwt,
                 },
                 body: JSON.stringify(payload)
             }).then(response => {
-                return response.text();
+                if (response.ok) {
+                    return response.text();
+                }
+                return response.json().then(json=>{
+                    throw new Error(json.message)
+                })
             }).then(fragments => {
                 document.getElementById("comment_list").innerHTML = fragments
+            }).catch(function (error) {
+                alert(error.message);
             })
         },
         patch(url, payload) {
@@ -40,7 +47,7 @@ var detail = {
 
             return fetch(`${deleteUrl}/${historyId}/${commentId}`, {
                 method: 'DELETE',
-            }).then(function(){
+            }).then(function () {
                 el.closest('ul').parentNode.remove()
             });
         }
