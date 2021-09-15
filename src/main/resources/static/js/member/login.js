@@ -16,10 +16,17 @@ var login = {
             headers: { 'content-Type': 'application/json' },
             body: JSON.stringify(payload)
         }).then(response => {
-            return response.json();
+            if(response.ok){
+                return response.json();
+            }
+            return response.json().then(json=>{
+                throw new Error(json.message)
+            })
         }).then(data => {
             localStorage.setItem("token",data.Authorization)
             console.log(data)
+        }).catch(function(error){
+            alert(error.message)
         })
     }
 };

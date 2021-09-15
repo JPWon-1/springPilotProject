@@ -21,7 +21,7 @@ public class MemberService {
     private PasswordEncoder bCryptPasswordEncoder;
 
     @Transactional
-    public Long signUp(Member newMember) {
+    public String signUp(Member newMember) {
         Optional<Member> oldMember = memberRepository.findByEmail(newMember.getEmail());
         if(oldMember.isPresent()){
             throw new IllegalStateException("이메일이 이미 존재합니다.");
@@ -29,6 +29,6 @@ public class MemberService {
         String encodedPassword = bCryptPasswordEncoder.encode(newMember.getPassword());
         newMember.bcryptionPasswordAndGiveRole(encodedPassword);
         memberRepository.save(newMember);
-        return newMember.getId();
+        return newMember.getEmail();
     }
 }

@@ -16,9 +16,17 @@ var join = {
             headers: { 'content-Type': 'application/json' },
             body: JSON.stringify(payload)
         }).then(response => {
-            return response.json();
+            if(response.ok){
+                return response.json();
+            }
+            return response.json().then(json=>{
+                throw new Error(json.message)
+            })
         }).then(data => {
-            console.log(data)
+            alert(`${data.response}님 회원가입이 완료되었습니다.`)
+            window.location.href="/login"
+        }).catch(function(error){
+            alert(error.message)
         })
     },
 };
