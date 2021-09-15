@@ -31,6 +31,9 @@ public class History extends BaseTimeEntity{
     private Long id;
 
     // private LocalDate historyDate;
+    private int year;
+    private int month;
+    private int day;
     private String historyDate;
 
     private String content;
