@@ -24,21 +24,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model){
-        History testHistory = History.builder()
-            .id(1L)
-            .content("content")
-            .source("source")
-            .build();
-
-        History testHistory2 = History.builder()
-            .id(2L)
-            .content("content2")
-            .source("source2")
-            .build();
-
-        historyRepository.save(testHistory);
-        historyRepository.save(testHistory2);
-
         model.addAttribute("histories",historyRepository.findAll());
         return "main";
     }
