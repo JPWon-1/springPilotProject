@@ -1,7 +1,6 @@
 package com.start.pilotproject.domain.history;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +29,6 @@ public class History extends BaseTimeEntity{
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="history_seq")
     private Long id;
 
-    // private LocalDate historyDate;
     private int year;
     private int month;
     private int day;

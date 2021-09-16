@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
@@ -25,23 +26,33 @@ public class HomeController {
     HistoryService historyService;
 
     @GetMapping("/")
-    public String home(Model model){
+    public String home(Model model) {
         LocalDate date = LocalDate.now();
         int month = date.getMonthValue();
         int day = date.getDayOfMonth();
-        List<History> findByMonthAndDay = historyRepository.findByMonthAndDay(month,day,Sort.by("year").ascending());
-        model.addAttribute("histories",findByMonthAndDay);
-        // model.addAttribute("histories",historyRepository.findAll());
+        List<History> findByMonthAndDay = historyRepository.findByMonthAndDay(month, day, Sort.by("year").ascending());
+        model.addAttribute("histories", findByMonthAndDay);
+        model.addAttribute("month", month);
+        model.addAttribute("day", day);
         return "main";
     }
-   
+
+    @GetMapping("/date")
+    public String historiesByDate(Model model, @RequestParam int month, @RequestParam int day) {
+        List<History> findByMonthAndDay = historyRepository.findByMonthAndDay(month, day, Sort.by("year").ascending());
+        model.addAttribute("histories", findByMonthAndDay);
+        model.addAttribute("month", month);
+        model.addAttribute("day", day);
+        return "main :: .collection-content";
+    }
+
     @GetMapping("/{id}")
-    public String detail(Model model, @PathVariable Long id){
+    public String detail(Model model, @PathVariable Long id) {
         History history = historyService.findById(id);
         List<Comments> comments = history.getComments();
-        model.addAttribute("history",history);
-        model.addAttribute("comments",comments);
+        model.addAttribute("history", history);
+        model.addAttribute("comments", comments);
         return "detail";
     }
-   
+
 }

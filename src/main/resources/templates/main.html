@@ -14,6 +14,8 @@
 	<section th:replace="fragments/fragments.html :: mainImg"></section>
 	<section class="contents_wrapper">
 		<div>
+			<input class="date-input" id="month" min="1" max="12" type="number" th:value="${month}">월
+			<input class="date-input" id="day" min="1" max="31" type="number" th:value="${day}">일
 			<table class="collection-content">
 				<colgroup>
 					<col width="10%" />
