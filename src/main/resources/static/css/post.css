@@ -16,9 +16,14 @@ ul.question_kind li button{
     border-color: #00c471;
     background-color: #00c471;
     color: white;
-    padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
+}
+
+ul.question_kind li label{
+    width: 90px;
+    display: block;
+    line-height: 2.5;
 }
 
 div.post_header{

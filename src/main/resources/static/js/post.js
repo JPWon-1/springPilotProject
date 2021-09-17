@@ -1,7 +1,6 @@
 var post = {
     init: function () {
-        var jwt = localStorage.getItem('token');
-        console.log(jwt)
+
         var _this = this;
         document.getElementById("btn_save").onclick = function () {
             _this.save();
@@ -15,22 +14,31 @@ var post = {
 
     },
     save: function () {
-        var data = {
-            title: $("#title").val(),
-            content: $("#content").val(),
+        const jwt = localStorage.getItem('token');
+        const url = "/post/api/v1/posts";
+        const payload = {
+            title: document.getElementById("title").value,
+            content: document.getElementById("content").value,
         };
-        $.ajax({
-            type: "POST",
-            url: "/api/v1/posts",
-            dataType: "json",
-            contentType: "application/json;charset=utf-8",
-            data: JSON.stringify(data),
-        }).done(function () {
-            alert("글이 등록되었습니다.");
-            window.location.href = "/posts";
-        }).fail(function (error) {
-            alert(JSON.stringify(error));
-        });
+        return fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-Type': 'application/json',
+                Authorization: jwt,
+            },
+            body: JSON.stringify(payload)
+        }).then(response => {
+            if (response.ok) {
+                return response.text();
+            }
+            return response.json().then(json=>{
+                throw new Error(json.message)
+            })
+        }).then(data => {
+            console.log(data)
+        }).catch(function (error) {
+            console.log(error.message);
+        })
     },
     update: function () {
         var data = {
