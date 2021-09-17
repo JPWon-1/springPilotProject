@@ -1,9 +1,11 @@
 var main = {
     init: function init() {
         var _this = this;
-        const contents = document.getElementsByClassName('content');
-        Array.from(contents).forEach(function (element) {
-            element.onclick = () => _this.request.get(element.id);
+
+        document.addEventListener('click', function (e) {
+            if (e.target && e.target.classList.contains('content')) {
+                _this.request.get(e.target.id);
+            }
         })
 
         const date = document.getElementsByClassName("date-input");
