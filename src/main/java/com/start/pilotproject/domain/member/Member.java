@@ -1,6 +1,9 @@
 package com.start.pilotproject.domain.member;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,8 +11,11 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import com.start.pilotproject.domain.comment.Comments;
 import com.start.pilotproject.util.BaseTimeEntity;
 
 import lombok.Builder;
