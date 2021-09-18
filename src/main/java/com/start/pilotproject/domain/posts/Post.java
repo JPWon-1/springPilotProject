@@ -9,6 +9,8 @@ import javax.persistence.SequenceGenerator;
 
 import com.start.pilotproject.util.BaseTimeEntity;
 
+import org.springframework.data.annotation.CreatedBy;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,7 +30,8 @@ public class Post extends BaseTimeEntity{
     @Column
     private String content;
     
-    @Column
+    @CreatedBy
+    @Column(updatable = false)
     private String author;
 
     @Builder
